@@ -1,7 +1,8 @@
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddRazorPages();
+// TODO: Remove AddRazorRuntimeCompilation() after development
+builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
 var app = builder.Build();
 

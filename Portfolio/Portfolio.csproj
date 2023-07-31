@@ -9,4 +9,10 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.20" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="MechanistTower\KnowledgeVault\" />
+    <Folder Include="MechanistTower\Spells\" />
+    <Folder Include="MechanistTower\SpellChanters\" />
+  </ItemGroup>
+
 </Project>

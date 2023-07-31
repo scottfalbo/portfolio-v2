@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <Folder Include="MechanistTower\KnowledgeVault\" />
+    <Folder Include="MechanistTower\GuardianAegis\" />
     <Folder Include="MechanistTower\Spells\" />
     <Folder Include="MechanistTower\SpellChanters\" />
   </ItemGroup>

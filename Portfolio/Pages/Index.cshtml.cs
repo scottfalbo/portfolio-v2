@@ -5,16 +5,11 @@ namespace Portfolio.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
-
-        public IndexModel(ILogger<IndexModel> logger)
-        {
-            _logger = logger;
-        }
+        public string ImageUrl { get; set; }
 
         public void OnGet()
         {
-
+            ImageUrl = "https://placehold.co/500x700";
         }
     }
 }

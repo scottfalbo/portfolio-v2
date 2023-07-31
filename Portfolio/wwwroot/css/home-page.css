@@ -15,6 +15,6 @@
   min-width: 300px;
   height: 700px;
   margin: 15px;
-  background: url('https://placehold.co/500x700') no-repeat center center;
+  background: no-repeat center center;
   background-size: contain;
 }

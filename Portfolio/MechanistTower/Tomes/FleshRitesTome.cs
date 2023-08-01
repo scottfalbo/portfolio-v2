@@ -1,5 +1,4 @@
-﻿// File: C:\Users\scott\source\repos\PortfolioV2\Portfolio\MechanistTower\Tomes\FleshRitesTome.cs
-using Microsoft.Azure.Cosmos;
+﻿using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Cosmos.Linq;
 using Portfolio.MechanistTower.Entities;
 using Portfolio.MechanistTower.Scryers;

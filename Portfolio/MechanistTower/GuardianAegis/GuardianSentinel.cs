@@ -4,13 +4,13 @@ namespace Portfolio.MechanistTower.GuardianAegis
 {
     public class GuardianSentinel : IGuardianSentinel
     {
-        private readonly UserManager<WizardOverlord> _userManager;
-        private readonly SignInManager<WizardOverlord> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
 
-        public GuardianSentinel(UserManager<WizardOverlord> userManager, SignInManager<WizardOverlord> signin)
+        public GuardianSentinel(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signIn)
         {
             _userManager = userManager;
-            _signInManager = signin;
+            _signInManager = signIn;
         }
 
         public async Task<SanctumCorporeal> Authenticate(string userName, string password)
@@ -26,7 +26,6 @@ namespace Portfolio.MechanistTower.GuardianAegis
                     Id = user.Id,
                     UserName = user.UserName,
                     Email = user.Email,
-                    Roles = await _userManager.GetRolesAsync(user),
                     IsRegistered = true
                 };
             }

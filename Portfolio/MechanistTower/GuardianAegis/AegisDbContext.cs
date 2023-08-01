@@ -5,7 +5,7 @@ using Portfolio.MechanistTower.Configurations;
 
 namespace Portfolio.MechanistTower.GuardianAegis
 {
-    public class AegisDbContext : IdentityDbContext<WizardOverlord>
+    public class AegisDbContext : IdentityDbContext<IdentityUser>
     {
         private ConfigurationSigils ConfigurationSigils { get; }
 
@@ -26,18 +26,21 @@ namespace Portfolio.MechanistTower.GuardianAegis
 
             var hasher = new PasswordHasher<IdentityUser>();
 
-            modelBuilder.Entity<IdentityUser>().HasData(
-                new IdentityUser
-                {
-                    Id = userId,
-                    UserName = adminName,
-                    NormalizedUserName = adminName.ToUpper(),
-                    Email = adminEmail,
-                    NormalizedEmail = adminEmail,
-                    EmailConfirmed = true,
-                    PasswordHash = hasher.HashPassword(null, adminPass),
-                    SecurityStamp = string.Empty
-                });
+            var user = new IdentityUser()
+            {
+                Id = userId,
+                UserName = adminName,
+                NormalizedUserName = adminName.ToUpper(),
+                Email = adminEmail,
+                NormalizedEmail = adminEmail,
+                EmailConfirmed = true,
+                PasswordHash = hasher.HashPassword(null, adminPass),
+            };
+
+            var password = hasher.HashPassword(user, adminPass);
+            user.PasswordHash = password;
+
+            modelBuilder.Entity<IdentityUser>().HasData(user);
         }
     }
 }

@@ -2,8 +2,19 @@
 {
     public class InfernalContract
     {
-        public string id { get; set; } = Guid.NewGuid().ToString();
+        public string Id { get; set; }
 
-        public string partitionKey { get; set; }
+        public string PartitionKey { get; set; }
+
+        public string ChronicleCode { get; set; }
+
+        public DateTimeOffset CreatedDateTime { get; set; } = DateTimeOffset.UtcNow;
+
+        public InfernalContract(string chronicleCode)
+        {
+            ChronicleCode = chronicleCode;
+            Id = Guid.NewGuid().ToString();
+            PartitionKey = $"{ChronicleCode}-{Id}";
+        }
     }
 }

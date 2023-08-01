@@ -1,6 +1,6 @@
 ﻿namespace Portfolio.MechanistTower.Tomes
 {
-    public interface IRunicRepository
+    public interface IFleshRitesTome
     {
     }
 }

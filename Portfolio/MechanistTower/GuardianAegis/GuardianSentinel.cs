@@ -13,9 +13,6 @@ namespace Portfolio.MechanistTower.GuardianAegis
             _signInManager = signin;
         }
 
-        /// <summary>
-        /// Logs user in.
-        /// </summary>
         public async Task<SanctumCorporeal> Authenticate(string userName, string password)
         {
             var result = await _signInManager.PasswordSignInAsync(userName, password, true, false);
@@ -33,6 +30,7 @@ namespace Portfolio.MechanistTower.GuardianAegis
                     IsRegistered = true
                 };
             }
+
             return null;
         }
     }

@@ -4,10 +4,10 @@ namespace Portfolio.MechanistTower.GuardianAegis
 {
     public class GuardianSentinel : IGuardianSentinel
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<WizardOverlord> _userManager;
+        private readonly SignInManager<WizardOverlord> _signInManager;
 
-        public GuardianSentinel(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signin)
+        public GuardianSentinel(UserManager<WizardOverlord> userManager, SignInManager<WizardOverlord> signin)
         {
             _userManager = userManager;
             _signInManager = signin;

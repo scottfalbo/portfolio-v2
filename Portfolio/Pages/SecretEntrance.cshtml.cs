@@ -9,6 +9,7 @@ namespace Portfolio.Pages
         private readonly IGuardianSentinel _guardianSentinel;
 
         public SecretEntranceModel(IGuardianSentinel guardianSentinel)
+
         {
             _guardianSentinel = guardianSentinel;
         }

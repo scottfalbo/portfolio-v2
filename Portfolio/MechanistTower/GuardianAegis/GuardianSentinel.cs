@@ -32,5 +32,18 @@ namespace Portfolio.MechanistTower.GuardianAegis
 
             return null;
         }
+
+        public async Task<IdentityResult> UpdatePassword(string userId, string currentPassword, string newPassword)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            return await _userManager.ChangePasswordAsync(user, currentPassword, newPassword);
+        }
+
+        public async Task<IdentityResult> UpdateUserName(string userId, string newName)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            user.UserName = newName;
+            return await _userManager.UpdateAsync(user);
+        }
     }
 }

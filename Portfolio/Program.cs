@@ -1,10 +1,14 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Portfolio.MechanistTower.Configurations;
 using Portfolio.MechanistTower.GuardianAegis;
 
 var builder = WebApplication.CreateBuilder(args);
+var configuration = builder.Configuration;
 
-// Add services to the container.
+var configurationSigils = ConfigurationRitual.Invoke(configuration);
+builder.Services.AddSingleton(configurationSigils);
+
 // TODO: Remove AddRazorRuntimeCompilation() after development
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 

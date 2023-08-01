@@ -42,6 +42,7 @@ namespace Portfolio.MechanistTower.Configurations
         private static void TetherTransients(WebApplicationBuilder builder)
         {
             builder.Services.AddTransient<IGuardianSentinel, GuardianSentinel>();
+            builder.Services.AddTransient<ICosmosTomeScryer, CosmosTomeScryer>();
         }
 
         private static void SecureAegis(WebApplicationBuilder builder)

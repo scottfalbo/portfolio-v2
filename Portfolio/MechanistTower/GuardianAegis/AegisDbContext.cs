@@ -40,8 +40,7 @@ namespace Portfolio.MechanistTower.GuardianAegis
                 NormalizedUserName = adminName.ToUpper(),
                 Email = adminEmail,
                 NormalizedEmail = adminEmail,
-                EmailConfirmed = true,
-                PasswordHash = hasher.HashPassword(null, adminPass),
+                EmailConfirmed = true
             };
 
             var password = hasher.HashPassword(user, adminPass);

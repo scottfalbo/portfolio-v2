@@ -9,6 +9,8 @@ var configuration = builder.Configuration;
 var configurationSigils = ConfigurationRitual.Invoke(configuration);
 builder.Services.AddSingleton(configurationSigils);
 
+builder.Services.AddTransient<IGuardianSentinel, GuardianSentinel>();
+
 // TODO: Remove AddRazorRuntimeCompilation() after development
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 

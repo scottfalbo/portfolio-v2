@@ -19,6 +19,13 @@ namespace Portfolio.MechanistTower.GuardianAegis
         {
             base.OnModelCreating(modelBuilder);
 
+            var user = ConjureWizard();
+
+            modelBuilder.Entity<IdentityUser>().HasData(user);
+        }
+
+        private IdentityUser ConjureWizard()
+        {
             var adminName = ConfigurationSigils.AdminName;
             var adminPass = ConfigurationSigils.AdminPass;
             var adminEmail = ConfigurationSigils.AdminEmail;
@@ -40,7 +47,7 @@ namespace Portfolio.MechanistTower.GuardianAegis
             var password = hasher.HashPassword(user, adminPass);
             user.PasswordHash = password;
 
-            modelBuilder.Entity<IdentityUser>().HasData(user);
+            return user;
         }
     }
 }

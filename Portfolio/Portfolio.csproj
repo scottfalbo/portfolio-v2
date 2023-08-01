@@ -24,7 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="MechanistTower\Entities\" />
     <Folder Include="MechanistTower\Spells\" />
     <Folder Include="MechanistTower\SpellChanters\" />
   </ItemGroup>

@@ -12,9 +12,7 @@
   display: block;
   width: 100%;
   max-width: 500px;
-  min-width: 300px;
+  min-width: 200px;
   height: 700px;
   margin: 15px;
-  background: no-repeat center center;
-  background-size: contain;
 }

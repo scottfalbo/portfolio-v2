@@ -4,6 +4,8 @@
     {
         public string Name { get; set; }
 
+        public string Synopsis { get; set; }
+
         public Chamber(string cypher) : base(cypher)
         {
         }

@@ -1,6 +1,6 @@
 ﻿namespace Portfolio.MechanistTower.Entities
 {
-    public abstract class GalleryGaze : InfernalContract
+    public abstract class OculusEcho : InfernalContract
     {
         public string Name { get; set; }
 
@@ -12,7 +12,7 @@
 
         public string AltText { get; set; }
 
-        public GalleryGaze(string chronicleCode) : base(chronicleCode)
+        public OculusEcho(string chronicleCode) : base(chronicleCode)
         {
         }
     }

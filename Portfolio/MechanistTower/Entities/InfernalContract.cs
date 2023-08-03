@@ -1,6 +1,6 @@
 ﻿namespace Portfolio.MechanistTower.Entities
 {
-    public class InfernalContract
+    public abstract class InfernalContract
     {
         public string Id { get; set; }
 

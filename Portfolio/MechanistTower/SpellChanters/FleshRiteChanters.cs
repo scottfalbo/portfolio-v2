@@ -24,8 +24,8 @@ namespace Portfolio.MechanistTower.SpellChanters
                     Name = $"Flesh Rite {i + 1}",
                     AltText = $"Flesh Rite alt text {i + 1}",
                     Display = true,
-                    ImageUrl = "https://placehold.co/1080x1920",
-                    ThumbnailUrl = "https://placehold.co/100x177",
+                    ImageUrl = "https://placehold.co/1080x1920/939393/FFF",
+                    ThumbnailUrl = "https://placehold.co/100x177/939393/FFF",
                 };
 
                 fleshRites.Add(fleshRite);

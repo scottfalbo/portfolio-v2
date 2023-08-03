@@ -13,3 +13,10 @@
   align-items: center;
   box-sizing: border-box;
 }
+
+.paragraph-format {
+  white-space: pre-line;
+  text-align: justify;
+  word-wrap: break-word;
+}
+

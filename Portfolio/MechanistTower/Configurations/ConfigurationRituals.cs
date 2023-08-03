@@ -3,6 +3,7 @@ using Microsoft.Azure.Cosmos;
 using Microsoft.EntityFrameworkCore;
 using Portfolio.MechanistTower.GuardianAegis;
 using Portfolio.MechanistTower.Scryers;
+using Portfolio.MechanistTower.Tomes;
 
 namespace Portfolio.MechanistTower.Configurations
 {
@@ -43,6 +44,7 @@ namespace Portfolio.MechanistTower.Configurations
         {
             builder.Services.AddTransient<IGuardianSentinel, GuardianSentinel>();
             builder.Services.AddTransient<ICosmosTomeScryer, CosmosTomeScryer>();
+            builder.Services.AddTransient<IFleshRitesTome, FleshRitesTome>();
         }
 
         private static void SecureAegis(WebApplicationBuilder builder)

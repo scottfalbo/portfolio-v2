@@ -25,7 +25,6 @@
 
   <ItemGroup>
     <Folder Include="MechanistTower\Spells\" />
-    <Folder Include="MechanistTower\SpellChanters\" />
   </ItemGroup>
 
 </Project>

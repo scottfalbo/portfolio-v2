@@ -6,15 +6,15 @@
 
         public string PartitionKey { get; set; }
 
-        public string ChronicleCode { get; set; }
+        public string EternalSymbol { get; set; }
 
         public DateTimeOffset CreatedDateTime { get; set; } = DateTimeOffset.UtcNow;
 
         public InfernalContract(string chronicleCode)
         {
-            ChronicleCode = chronicleCode;
+            EternalSymbol = chronicleCode;
             Id = Guid.NewGuid().ToString();
-            PartitionKey = $"{ChronicleCode}-{Id}";
+            PartitionKey = $"{EternalSymbol}-{Id}";
         }
     }
 }

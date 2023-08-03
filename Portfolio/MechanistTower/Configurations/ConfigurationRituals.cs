@@ -3,6 +3,7 @@ using Microsoft.Azure.Cosmos;
 using Microsoft.EntityFrameworkCore;
 using Portfolio.MechanistTower.GuardianAegis;
 using Portfolio.MechanistTower.Scryers;
+using Portfolio.MechanistTower.SpellChanters;
 using Portfolio.MechanistTower.Tomes.FleshRites;
 
 namespace Portfolio.MechanistTower.Configurations
@@ -43,7 +44,7 @@ namespace Portfolio.MechanistTower.Configurations
         private static void TetherTransients(WebApplicationBuilder builder)
         {
             builder.Services.AddTransient<IGuardianSentinel, GuardianSentinel>();
-            builder.Services.AddTransient<ICosmosTomeScryer, CosmosTomeScryer>();
+            builder.Services.AddTransient<IFleshRiteChanters, FleshRiteChanters>();
             builder.Services.AddTransient<IFleshRitesTome, FleshRitesTome>();
             builder.Services.AddTransient<IFleshRitesChamberTome, FleshRitesChamberTome>();
         }

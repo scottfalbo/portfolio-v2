@@ -4,6 +4,6 @@ namespace Portfolio.MechanistTower.SpellChanters
 {
     public interface IFleshRiteChanters
     {
-        Task<FleshRitesChamber> GetFleshRitesChamber();
+        Task<List<FleshRite>> GetFleshRites();
     }
 }

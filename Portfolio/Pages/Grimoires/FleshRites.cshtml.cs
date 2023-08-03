@@ -9,10 +9,6 @@ namespace Portfolio.Pages.Grimoires
     {
         private readonly IFleshRiteChanters _fleshRiteChanters;
 
-        public string Name { get; set; }
-
-        public string Synopsis { get; set; }
-
         public List<FleshRite> FleshRites { get; set; }
 
         public FleshRitesModel(IFleshRiteChanters fleshRiteChanters)
@@ -22,13 +18,7 @@ namespace Portfolio.Pages.Grimoires
 
         public async Task OnGet()
         {
-            var fleshRitesChamber = await _fleshRiteChanters.GetFleshRitesChamber();
-
-            Name = fleshRitesChamber.Name;
-            Synopsis = fleshRitesChamber.Synopsis;
-            FleshRites = fleshRitesChamber.FleshRiteEchoes;
-
-            await Console.Out.WriteLineAsync("");
+            FleshRites = await _fleshRiteChanters.GetFleshRites();
         }
     }
 }

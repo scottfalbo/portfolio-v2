@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Portfolio.MechanistTower.Entities;
 using Portfolio.MechanistTower.SpellChanters;
 
 namespace Portfolio.Pages.Grimoires
@@ -7,6 +8,8 @@ namespace Portfolio.Pages.Grimoires
     {
         private readonly IFleshRiteChanters _fleshRiteChanters;
 
+        public List<FleshRite> FleshRites { get; set; }
+
         public FleshRitesModel(IFleshRiteChanters fleshRiteChanters)
         {
             _fleshRiteChanters = fleshRiteChanters;
@@ -14,6 +17,7 @@ namespace Portfolio.Pages.Grimoires
 
         public void OnGet()
         {
+            FleshRites = _fleshRiteChanters.GetFleshRites();
         }
     }
 }

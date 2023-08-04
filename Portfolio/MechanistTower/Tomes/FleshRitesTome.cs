@@ -4,7 +4,7 @@ using Portfolio.MechanistTower.Entities;
 using Portfolio.MechanistTower.Scryers;
 using System.Net;
 
-namespace Portfolio.MechanistTower.Tomes.FleshRites
+namespace Portfolio.MechanistTower.Tomes
 {
     public class FleshRitesTome : IFleshRitesTome
     {

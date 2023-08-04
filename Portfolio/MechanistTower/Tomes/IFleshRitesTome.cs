@@ -1,6 +1,6 @@
 ﻿using Portfolio.MechanistTower.Entities;
 
-namespace Portfolio.MechanistTower.Tomes.FleshRites
+namespace Portfolio.MechanistTower.Tomes
 {
     public interface IFleshRitesTome
     {

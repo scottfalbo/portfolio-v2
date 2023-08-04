@@ -21,3 +21,18 @@
   word-wrap: break-word;
 }
 
+#ingressus {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin: 20px auto;
+}
+
+#ingressus img {
+  width: 100%;
+  max-width: 390px;;
+  min-width: 100px;
+  height: auto;
+}

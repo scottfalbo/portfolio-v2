@@ -45,7 +45,7 @@ namespace Portfolio.MechanistTower.Configurations
         {
             builder.Services.AddTransient<IGuardianSentinel, GuardianSentinel>();
             builder.Services.AddTransient<IFleshRiteChanters, FleshRiteChanters>();
-            builder.Services.AddTransient<IFleshRitesTome, FleshRitesTome>();
+            builder.Services.AddTransient<ICryptCrawler, CryptCrawler>();
             builder.Services.AddTransient<IIllustrationChanters, IllustrationChanters>();
         }
 

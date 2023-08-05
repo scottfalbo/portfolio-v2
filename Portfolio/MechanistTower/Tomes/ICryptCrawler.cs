@@ -2,7 +2,7 @@
 
 namespace Portfolio.MechanistTower.Tomes
 {
-    public interface IFleshRitesTome
+    public interface ICryptCrawler
     {
         Task ImbueFleshRiteAsync(FleshRite fleshRite);
 

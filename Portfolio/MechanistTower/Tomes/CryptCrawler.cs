@@ -6,11 +6,11 @@ using System.Net;
 
 namespace Portfolio.MechanistTower.Tomes
 {
-    public class FleshRitesTome : IFleshRitesTome
+    public class CryptCrawler : ICryptCrawler
     {
         private readonly Container _container;
 
-        public FleshRitesTome(ICosmosTomeScryer cosmosTomeScryer)
+        public CryptCrawler(ICosmosTomeScryer cosmosTomeScryer)
         {
             var scryer = cosmosTomeScryer.ConjureScryer();
             _container = scryer.GetContainer("PaleSpecter", "Tomes");

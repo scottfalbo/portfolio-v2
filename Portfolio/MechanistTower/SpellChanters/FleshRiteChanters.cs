@@ -6,9 +6,9 @@ namespace Portfolio.MechanistTower.SpellChanters
 {
     public class FleshRiteChanters : IFleshRiteChanters
     {
-        private readonly IFleshRitesTome _fleshRitesTome;
+        private readonly ICryptCrawler _fleshRitesTome;
 
-        public FleshRiteChanters(IFleshRitesTome fleshRitesTome)
+        public FleshRiteChanters(ICryptCrawler fleshRitesTome)
         {
             _fleshRitesTome = fleshRitesTome;
         }

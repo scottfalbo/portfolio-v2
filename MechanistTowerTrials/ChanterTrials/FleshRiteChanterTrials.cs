@@ -1,18 +1,41 @@
-﻿namespace MechanistTowerTrials.ChanterTrials
+﻿using NSubstitute;
+using Portfolio.MechanistTower.Entities;
+using Portfolio.MechanistTower.SpellChanters;
+using Portfolio.MechanistTower.Tomes;
+
+namespace MechanistTowerTrials.ChanterTrials
 {
     [TestClass]
     public class FleshRiteChanterTrials
     {
+        private IFleshRitesTome _fleshRitesTomeVisage;
+
+        private IFleshRiteChanters _fleshRiteChanters;
+
         [TestMethod]
-        public void aaa()
+        public async Task GetFleshRites_ReturnsFleshRites()
         {
+            var fleshRites = new List<FleshRite>
+            {
+                new FleshRite(),
+                new FleshRite(),
+                new FleshRite()
+            };
 
+            _fleshRitesTomeVisage.GetFleshRitesAsync().Returns(fleshRites);
+
+            var results = await _fleshRiteChanters.GetFleshRites();
+
+            await _fleshRitesTomeVisage.Received(1).GetFleshRitesAsync();
+            Assert.AreEqual(3, results.Count);
         }
-
+        
         [TestInitialize]
         public void Initialize()
         {
-            
+            _fleshRitesTomeVisage = Substitute.For<IFleshRitesTome>();
+
+            _fleshRiteChanters = new FleshRiteChanters(_fleshRitesTomeVisage);
         }
     }
 }

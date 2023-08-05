@@ -48,5 +48,10 @@ namespace Portfolio.Pages.Grimoires
 
             return Redirect("/Grimoires/FleshRites");
         }
+
+        public async Task<IActionResult> OnPostShatterEcho(string id, string partitionKey)
+        {
+            return Redirect("/Grimoires/FleshRites");
+        }
     }
 }

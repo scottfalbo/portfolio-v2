@@ -54,8 +54,11 @@ namespace Portfolio.MechanistTower.Tomes
         {
             try
             {
-                ItemResponse<FleshRite> response = await _container.ReadItemAsync<FleshRite>(id, new PartitionKey(partitionKey));
-                return response.Resource;
+                ItemResponse<InfernalContract> response = await _container.ReadItemAsync<InfernalContract>(id, new PartitionKey(partitionKey));
+
+                var fleshRite = _transmutator.InfernalContractToFleshRite(response.Resource);
+
+                return fleshRite;
             }
             catch (CosmosException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
             {
@@ -68,9 +71,11 @@ namespace Portfolio.MechanistTower.Tomes
             var id = updatedFleshRite.Id;
             var partitionKey = updatedFleshRite.PartitionKey;
 
+            var infernalContract = _transmutator.FleshRiteToInfernalContract(updatedFleshRite);
+
             try
             {
-                await _container.ReplaceItemAsync(updatedFleshRite, id, new PartitionKey(partitionKey));
+                await _container.ReplaceItemAsync(infernalContract, id, new PartitionKey(partitionKey));
             }
             catch (CosmosException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
             {
@@ -82,7 +87,7 @@ namespace Portfolio.MechanistTower.Tomes
         {
             try
             {
-                await _container.DeleteItemAsync<FleshRite>(id, new PartitionKey(partitionKey));
+                await _container.DeleteItemAsync<InfernalContract>(id, new PartitionKey(partitionKey));
             }
             catch (CosmosException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
             {

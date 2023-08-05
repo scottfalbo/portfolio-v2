@@ -4,7 +4,7 @@ namespace Portfolio.MechanistTower.Entities
 {
     public class FleshRite : OculusEcho
     {
-        public FleshRite() : base(OculusEchoCyphers.FleshRites)
+        public FleshRite() : base(OculusEchoCyphers.FleshRite)
         {
         }
     }

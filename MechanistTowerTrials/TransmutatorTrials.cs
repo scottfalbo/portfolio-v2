@@ -32,7 +32,7 @@ namespace MechanistTowerTrials
             Assert.AreEqual(fleshRite.Display, infernalContract.Display);
             Assert.AreEqual(fleshRite.ImageUrl, infernalContract.ImageUrl);
             Assert.AreEqual(fleshRite.ThumbnailUrl, infernalContract.ThumbnailUrl);
-            Assert.AreEqual(fleshRite.EternalSymbol, OculusEchoCyphers.FleshRites);
+            Assert.AreEqual(fleshRite.EternalSymbol, OculusEchoCyphers.FleshRite);
         }
 
         [TestMethod]
@@ -46,12 +46,12 @@ namespace MechanistTowerTrials
                 .WithAltText("test-alt-text")
                 .WithCreatedDateTime(date)
                 .WithDisplay(true)
-                .WithEternalSymbol(OculusEchoCyphers.FleshRites)
+                .WithEternalSymbol(OculusEchoCyphers.FleshRite)
                 .WithId(id)
                 .WithImageUrl("test-image-url")
-                .WithPartitionKey($"{OculusEchoCyphers.FleshRites}-{id}")
+                .WithPartitionKey($"{OculusEchoCyphers.FleshRite}-{id}")
                 .WithThumbnailUrl("test-thumbnail-url")
-                .WithEternalSymbol(OculusEchoCyphers.FleshRites)
+                .WithEternalSymbol(OculusEchoCyphers.FleshRite)
                 .Build();
 
             var transmutator = new FleshRiteTransmutator();

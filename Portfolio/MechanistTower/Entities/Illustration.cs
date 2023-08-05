@@ -12,7 +12,7 @@ namespace Portfolio.MechanistTower.Entities
 
         public decimal Price { get; set; }
 
-        public Illustration() : base(OculusEchoCyphers.Illustrations)
+        public Illustration() : base(OculusEchoCyphers.Illustration)
         {
         }
     }

@@ -2,8 +2,8 @@
 {
     public static class OculusEchoCyphers
     {
-        public const string FleshRites = nameof(FleshRites);
+        public const string FleshRite = nameof(FleshRite);
 
-        public const string Illustrations = nameof(Illustrations);
+        public const string Illustration = nameof(Illustration);
     }
 }

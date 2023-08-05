@@ -20,6 +20,22 @@
         {
             <div class="gallery-thumbnail">
                 <img src="@fleshRite.ThumbnailUrl" />
+                @if (Model.IsWizardOverLord)
+                {
+                    <div class="menu-buttons-container">
+                        <div class="menu-button delete-button">
+                            <div class="x-part"></div>
+                            <div class="x-part"></div>
+                        </div>
+                        <div class="menu-button edit-button">
+                            <div class="dots">
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                            </div>
+                        </div>
+                    </div>
+                }
             </div>
         }
     </div>
@@ -34,3 +50,5 @@
         </p>
     </div>
 </section>
+
+

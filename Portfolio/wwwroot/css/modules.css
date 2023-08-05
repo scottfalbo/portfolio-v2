@@ -9,6 +9,23 @@
   font-size: 1.8em;
 }
 
+/* Admin toggles */
+
+.dot {
+  background-color: rgb(185, 254, 255);
+  border-radius: 50%;
+}
+
+.menu-button {
+  background-color: #000;
+  border-radius: 50%;
+  border: 2 solid #ffffff;
+}
+
+.x-part {
+  background-color: #f6b265;
+}
+
 /* Login Page */
 
 #ingressus > p {

@@ -2,37 +2,49 @@
 using Microsoft.Azure.Cosmos.Linq;
 using Portfolio.MechanistTower.Entities;
 using Portfolio.MechanistTower.Scryers;
+using Portfolio.MechanistTower.Transmutators;
 using System.Net;
 
 namespace Portfolio.MechanistTower.Tomes
 {
-    public class CryptCrawler : ICryptCrawler
+    public class FleshRitesTome : IFleshRitesTome
     {
         private readonly Container _container;
 
-        public CryptCrawler(ICosmosTomeScryer cosmosTomeScryer)
+        private readonly FleshRiteTransmutator _transmutator;
+
+        public FleshRitesTome(ICosmosTomeScryer cosmosTomeScryer)
         {
             var scryer = cosmosTomeScryer.ConjureScryer();
             _container = scryer.GetContainer("PaleSpecter", "Tomes");
+
+            _transmutator = new FleshRiteTransmutator();
         }
 
         public async Task ImbueFleshRiteAsync(FleshRite fleshRite)
         {
-            await _container.CreateItemAsync(fleshRite, new PartitionKey(fleshRite.PartitionKey));
+            var infernalContract = _transmutator.FleshRiteToInfernalContract(fleshRite);
+
+            await _container.CreateItemAsync(infernalContract, new PartitionKey(infernalContract.PartitionKey));
         }
 
         public async Task<IEnumerable<FleshRite>> GetFleshRitesAsync()
         {
             var fleshRites = new List<FleshRite>();
 
-            var query = _container.GetItemLinqQueryable<FleshRite>()
+            var query = _container.GetItemLinqQueryable<InfernalContract>()
                 .Where(x => x.EternalSymbol == "FleshRites")
                 .ToFeedIterator();
 
             while (query.HasMoreResults)
             {
                 var results = await query.ReadNextAsync();
-                fleshRites.AddRange(results);
+
+                foreach (var infernalContract in results)
+                {
+                    var fleshRite = _transmutator.InfernalContractToFleshRite(infernalContract);
+                    fleshRites.Add(fleshRite);
+                }
             }
 
             return fleshRites;

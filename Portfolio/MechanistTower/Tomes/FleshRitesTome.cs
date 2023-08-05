@@ -25,10 +25,13 @@ namespace Portfolio.MechanistTower.Tomes
         {
             var fleshRites = new List<FleshRite>();
 
-            var iterator = _container.GetItemLinqQueryable<FleshRite>().ToFeedIterator();
-            while (iterator.HasMoreResults)
+            var query = _container.GetItemLinqQueryable<FleshRite>()
+                .Where(x => x.EternalSymbol == "FleshRites")
+                .ToFeedIterator();
+
+            while (query.HasMoreResults)
             {
-                var results = await iterator.ReadNextAsync();
+                var results = await query.ReadNextAsync();
                 fleshRites.AddRange(results);
             }
 
@@ -48,8 +51,11 @@ namespace Portfolio.MechanistTower.Tomes
             }
         }
 
-        public async Task UpdateFleshRiteAsync(string id, string partitionKey, FleshRite updatedFleshRite)
+        public async Task UpdateFleshRiteAsync(FleshRite updatedFleshRite)
         {
+            var id = updatedFleshRite.Id;
+            var partitionKey = updatedFleshRite.PartitionKey;
+
             try
             {
                 await _container.ReplaceItemAsync(updatedFleshRite, id, new PartitionKey(partitionKey));

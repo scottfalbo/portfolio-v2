@@ -10,7 +10,7 @@ namespace Portfolio.MechanistTower.Tomes
 
         Task<IEnumerable<FleshRite>> GetFleshRitesAsync();
 
-        Task UpdateFleshRiteAsync(string id, string partitionKey, FleshRite updatedFleshRite);
+        Task UpdateFleshRiteAsync(FleshRite updatedFleshRite);
 
         Task DeleteFleshRiteAsync(string id, string partitionKey);
     }

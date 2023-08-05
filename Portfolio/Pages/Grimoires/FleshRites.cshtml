@@ -45,7 +45,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Preserve</button>
-                                    <form asp-page-handler="ShatterEcho" method="post" enctype="form-data">
+                                    <form asp-page-handler="ShatterEcho" method="post" enctype="multipart/form-data">
                                         <input type="hidden" name="id" value="@fleshRite.Id" />
                                         <input type="hidden" name="partitionKey" value="@fleshRite.PartitionKey" />
                                         <button type="submit" class="btn btn-danger">Shatter</button>

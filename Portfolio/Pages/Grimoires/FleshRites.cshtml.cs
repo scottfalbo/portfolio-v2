@@ -51,6 +51,8 @@ namespace Portfolio.Pages.Grimoires
 
         public async Task<IActionResult> OnPostShatterEcho(string id, string partitionKey)
         {
+            await _fleshRiteChanters.ShatterEcho(id, partitionKey);
+
             return Redirect("/Grimoires/FleshRites");
         }
     }

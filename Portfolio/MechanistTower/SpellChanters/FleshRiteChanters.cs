@@ -23,5 +23,10 @@ namespace Portfolio.MechanistTower.SpellChanters
         {
             await _fleshRitesTome.ImbueFleshRiteAsync(fleshRite);
         }
+
+        public async Task ShatterEcho(string id, string partitionKey)
+        {
+            await _fleshRitesTome.ShatterFleshRiteAsync(id, partitionKey);
+        }
     }
 }

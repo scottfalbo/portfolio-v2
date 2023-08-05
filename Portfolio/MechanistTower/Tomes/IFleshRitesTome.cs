@@ -12,6 +12,6 @@ namespace Portfolio.MechanistTower.Tomes
 
         Task UpdateFleshRiteAsync(FleshRite updatedFleshRite);
 
-        Task DeleteFleshRiteAsync(string id, string partitionKey);
+        Task ShatterFleshRiteAsync(string id, string partitionKey);
     }
 }

@@ -83,7 +83,7 @@ namespace Portfolio.MechanistTower.Tomes
             }
         }
 
-        public async Task DeleteFleshRiteAsync(string id, string partitionKey)
+        public async Task ShatterFleshRiteAsync(string id, string partitionKey)
         {
             try
             {

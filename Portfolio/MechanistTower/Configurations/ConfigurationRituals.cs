@@ -47,7 +47,6 @@ namespace Portfolio.MechanistTower.Configurations
             builder.Services.AddTransient<IFleshRiteChanters, FleshRiteChanters>();
             builder.Services.AddTransient<IFleshRitesTome, FleshRitesTome>();
             builder.Services.AddTransient<IIllustrationChanters, IllustrationChanters>();
-            builder.Services.AddTransient<IIllustrationsTome, IllustrationsTome>();
         }
 
         private static void SecureAegis(WebApplicationBuilder builder)

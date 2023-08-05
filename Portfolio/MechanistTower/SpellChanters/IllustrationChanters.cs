@@ -5,13 +5,6 @@ namespace Portfolio.MechanistTower.SpellChanters
 {
     public class IllustrationChanters : IIllustrationChanters
     {
-        private readonly IIllustrationsTome _illustrationsTome;
-
-        public IllustrationChanters(IIllustrationsTome illustrationsTome)
-        {
-            _illustrationsTome = illustrationsTome;
-        }
-
         public async Task<List<Illustration>> GetIllustrations()
         {
             var illustration = new List<Illustration>();

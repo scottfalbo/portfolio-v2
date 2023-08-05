@@ -29,6 +29,16 @@ namespace MechanistTowerTrials.ChanterTrials
             await _fleshRitesTomeVisage.Received(1).GetFleshRitesAsync();
             Assert.AreEqual(3, results.Count);
         }
+
+        [TestMethod]
+        public async Task ImbueEcho_CallsTome()
+        {
+            var fleshRite = new FleshRite();
+
+            await _fleshRiteChanters.ImbueEcho(fleshRite);
+
+            await _fleshRitesTomeVisage.Received(1).ImbueFleshRiteAsync(fleshRite);
+        }
         
         [TestInitialize]
         public void Initialize()

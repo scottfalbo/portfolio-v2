@@ -21,6 +21,13 @@
   word-wrap: break-word;
 }
 
+.input-field {
+  width: 260px;
+  height: 50px;
+  margin: 10px auto;
+}
+
+/* Login Page */
 #ingressus {
   display: flex;
   flex-direction: column;
@@ -28,11 +35,23 @@
   align-items: center;
   gap: 20px;
   margin: 20px auto;
+  padding: 10px;
+  background-color: #000;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 410px;
 }
 
 #ingressus img {
   width: 100%;
   max-width: 390px;;
-  min-width: 100px;
+  min-width: 260px;
   height: auto;
+}
+
+.login-rune {
+  display: block;
+  width: 200px;
+  height: 40px;
+  margin: 10px auto;
 }

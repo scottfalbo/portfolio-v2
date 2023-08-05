@@ -78,6 +78,34 @@
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 
+.dropdown {
+  display: none;
+  margin: auto;
+  min-width: 160px;
+  z-index: 1;
+}
+
+.dropdown form {
+  padding: 10px;
+}
+
+.menu-form-group {
+  margin-bottom: 10px;
+}
+
+.dropdown label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+.dropbtn {
+  display: inline-block;
+}
+
 /* Login Page */
 #ingressus {
   display: flex;

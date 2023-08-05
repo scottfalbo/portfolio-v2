@@ -16,7 +16,7 @@ namespace Portfolio.MechanistTower.Tomes
             _container = scryer.GetContainer("PaleSpecter", "Tomes");
         }
 
-        public async Task CreateFleshRiteAsync(FleshRite fleshRite)
+        public async Task ImbueFleshRiteAsync(FleshRite fleshRite)
         {
             await _container.CreateItemAsync(fleshRite, new PartitionKey(fleshRite.PartitionKey));
         }

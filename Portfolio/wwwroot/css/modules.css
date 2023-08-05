@@ -19,11 +19,31 @@
 .menu-button {
   background-color: #000;
   border-radius: 50%;
-  border: 2 solid #ffffff;
+  border: 1px solid #ffffff;
 }
 
 .x-part {
   background-color: #f6b265;
+}
+
+.dropdown-container {
+  text-align: center;
+}
+
+.dropbtn {
+  background-color: #000;
+  color: rgb(185, 254, 255);
+  padding: 16px;
+  font-size: 16px;
+  border: solid 1px rgb(185, 254, 255);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.dropdown {
+  background-color: #000;
+  margin: 5px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
 /* Login Page */
@@ -39,3 +59,7 @@
   background-color: #000;
   color: #ffd6a6;
 }
+
+
+/*  ------------------ */
+

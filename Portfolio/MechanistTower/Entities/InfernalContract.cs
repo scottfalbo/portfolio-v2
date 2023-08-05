@@ -1,20 +1,52 @@
-﻿namespace Portfolio.MechanistTower.Entities
+﻿using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
+
+namespace Portfolio.MechanistTower.Entities
 {
-    public abstract class InfernalContract
+    public class InfernalContract
     {
-        public string Id { get; set; }
+        [Required]
+        [JsonProperty(PropertyName = "altText")]
+        public string AltText { get; set; }
 
-        public string PartitionKey { get; set; }
-
-        public string EternalSymbol { get; set; }
-
+        [JsonProperty(PropertyName = "createdDateTime")]
         public DateTimeOffset CreatedDateTime { get; set; } = DateTimeOffset.UtcNow;
 
-        public InfernalContract(string chronicleCode)
-        {
-            EternalSymbol = chronicleCode;
-            Id = Guid.NewGuid().ToString();
-            PartitionKey = $"{EternalSymbol}-{Id}";
-        }
+        [Required]
+        [JsonProperty(PropertyName = "display")]
+        public bool Display { get; set; }
+
+        [Required]
+        [JsonProperty(PropertyName = "eternalSymbol")]
+        public string EternalSymbol { get; set; }
+
+        [Required]
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; set; }
+
+        [JsonProperty(PropertyName = "imageUrl")]
+        public string ImageUrl { get; set; }
+
+        [JsonProperty(PropertyName = "isForSale")]
+        public bool IsForSale { get; set; }
+
+        [JsonProperty(PropertyName = "medium")]
+        public string Medium { get; set; }
+
+        [JsonProperty(PropertyName = "name")]
+        public string Name { get; set; }
+
+        [Required]
+        [JsonProperty(PropertyName = "partitionKey")]
+        public string PartitionKey { get; set; }
+
+        [JsonProperty(PropertyName = "price")]
+        public decimal Price { get; set; }
+
+        [JsonProperty(PropertyName = "size")]
+        public string Size { get; set; }
+
+        [JsonProperty(PropertyName = "thumbnailUrl")]
+        public string ThumbnailUrl { get; set; }
     }
 }

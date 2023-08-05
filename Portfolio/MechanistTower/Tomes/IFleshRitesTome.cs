@@ -4,7 +4,7 @@ namespace Portfolio.MechanistTower.Tomes
 {
     public interface IFleshRitesTome
     {
-        Task CreateFleshRiteAsync(FleshRite fleshRite);
+        Task ImbueFleshRiteAsync(FleshRite fleshRite);
 
         Task<FleshRite> GetFleshRiteAsync(string id, string partitionKey);
 

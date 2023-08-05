@@ -1,6 +1,6 @@
 ﻿namespace Portfolio.MechanistTower.Entities
 {
-    public abstract class OculusEcho : InfernalContract
+    public abstract class OculusEcho : GreaterBinding
     {
         public string Name { get; set; }
 

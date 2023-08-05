@@ -40,6 +40,34 @@
         }
     </div>
 
+    @if (Model.IsWizardOverLord)
+    {
+        <div class="dropdown-container">
+            <input type="checkbox" id="menuToggle" class="menu-toggle">
+            <label class="dropbtn" for="menuToggle">Imbue Echo</label>
+            <div class="dropdown">
+                <form asp-page-handler="ImbueEcho" method="post" enctype="multipart/form-data">
+                    <div>
+                        <label for="image">Upload image(s):</label>
+                        <input name="files" type="file" multiple="multiple" accept="image/*" />
+                    </div>
+                    <div>
+                        <label for="name">Name (Optional):</label>
+                        <input type="text" name="name" id="name" />
+                    </div>
+                    <div>
+                        <label for="altText">Alt Text (Optional):</label>
+                        <input type="text" name="altText" id="altText" />
+                    </div>
+                    <div>
+                        <input type="submit" value="Submit" />
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    }
+
     <div class="gallery-chamber-synopsis">
         <p class="paragraph-format">
             Mystica arcanae vocibus resonant, inter sidera lunaque pervagantur. Obscuritas noctis revelat arcanum, secretum veritatis occultum. In silvis umbrosis, oraculum susurrat, mysterium naturae evocans.

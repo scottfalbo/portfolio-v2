@@ -34,7 +34,7 @@ namespace Portfolio.MechanistTower.SpellChanters
                 _configurationSigils.AzureStorageConnectionString,
                 _configurationSigils.AzureStorageContainerName);
 
-            if (blobContainerClient.IsNull())
+            if (blobContainerClient == null)
             {
                 await blobContainerClient.CreateIfNotExistsAsync();
             }

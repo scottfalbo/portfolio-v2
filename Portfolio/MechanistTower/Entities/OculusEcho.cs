@@ -12,7 +12,7 @@
 
         public string AltText { get; set; }
 
-        public string StorageFileName { get; set; }
+        public string FileName { get; set; }
 
         public OculusEcho(string chronicleCode) : base(chronicleCode)
         {

@@ -44,7 +44,7 @@ namespace Portfolio.Pages.Grimoires
                     AltText = altText,
                     ImageUrl = echo.Uri.ToString(),
                     ThumbnailUrl = "https://placehold.co/100x177/939393/FFF",
-                    StorageFileName = file.FileName,
+                    FileName = file.FileName,
                 };
 
                 await _fleshRiteChanters.ImbueEcho(fleshRite);
@@ -53,9 +53,9 @@ namespace Portfolio.Pages.Grimoires
             return Redirect("/Grimoires/FleshRites");
         }
 
-        public async Task<IActionResult> OnPostShatterEcho(string id, string partitionKey)
+        public async Task<IActionResult> OnPostShatterEcho(string id, string partitionKey, string fileName)
         {
-            await _echoKeeperChanter.BanishEcho(id);
+            await _echoKeeperChanter.BanishEcho(fileName);
 
             await _fleshRiteChanters.ShatterEcho(id, partitionKey);
 

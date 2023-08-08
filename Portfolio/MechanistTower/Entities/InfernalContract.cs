@@ -20,6 +20,9 @@ namespace Portfolio.MechanistTower.Entities
         [JsonProperty(PropertyName = "eternalSymbol")]
         public string EternalSymbol { get; set; }
 
+        [JsonProperty(PropertyName = "FileName")]
+        public string FileName { get; set; }
+
         [Required]
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }

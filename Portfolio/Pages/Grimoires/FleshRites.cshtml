@@ -48,6 +48,7 @@
                                     <form asp-page-handler="ShatterEcho" method="post" enctype="multipart/form-data">
                                         <input type="hidden" name="id" value="@fleshRite.Id" />
                                         <input type="hidden" name="partitionKey" value="@fleshRite.PartitionKey" />
+                                        <input type="hidden" name="fileName" value="@fleshRite.FileName" />
                                         <button type="submit" class="btn btn-danger">Shatter</button>
                                     </form>
                                 </div>

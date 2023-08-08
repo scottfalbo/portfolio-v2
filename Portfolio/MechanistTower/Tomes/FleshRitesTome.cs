@@ -1,6 +1,7 @@
 ﻿using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Cosmos.Linq;
 using Portfolio.MechanistTower.Entities;
+using Portfolio.MechanistTower.Entities.EternalSymbols;
 using Portfolio.MechanistTower.Scryers;
 using Portfolio.MechanistTower.Transmutators;
 using System.Net;
@@ -33,7 +34,7 @@ namespace Portfolio.MechanistTower.Tomes
             var fleshRites = new List<FleshRite>();
 
             var query = _container.GetItemLinqQueryable<InfernalContract>()
-                .Where(x => x.EternalSymbol == "FleshRites")
+                .Where(x => x.EternalSymbol == OculusEchoCyphers.FleshRite)
                 .ToFeedIterator();
 
             while (query.HasMoreResults)

@@ -8,14 +8,16 @@ namespace Portfolio.Pages.Grimoires
     public class FleshRitesModel : PageModel
     {
         private readonly IFleshRiteChanters _fleshRiteChanters;
+        private readonly IEchoKeeperChanter _echoKeeperChanter;
 
         public bool IsWizardOverLord { get; set; }
 
         public List<FleshRite> FleshRites { get; set; }
 
-        public FleshRitesModel(IFleshRiteChanters fleshRiteChanters)
+        public FleshRitesModel(IFleshRiteChanters fleshRiteChanters, IEchoKeeperChanter echoKeeperChanter)
         {
             _fleshRiteChanters = fleshRiteChanters;
+            _echoKeeperChanter = echoKeeperChanter;
         }
 
         public async Task OnGet()
@@ -34,13 +36,15 @@ namespace Portfolio.Pages.Grimoires
 
             foreach (var file in files)
             {
-                // TODO: add blob storage stuff here and get an actual url
+                var echo = await _echoKeeperChanter.InscribeEcho(file);
+
                 var fleshRite = new FleshRite()
                 {
                     Name = name,
                     AltText = altText,
-                    ImageUrl = "https://placehold.co/1080x1920/939393/FFF",
-                    ThumbnailUrl = "https://placehold.co/100x177/939393/FFF"
+                    ImageUrl = echo.Uri.ToString(),
+                    ThumbnailUrl = "https://placehold.co/100x177/939393/FFF",
+                    StorageFileName = file.FileName,
                 };
 
                 await _fleshRiteChanters.ImbueEcho(fleshRite);
@@ -51,6 +55,8 @@ namespace Portfolio.Pages.Grimoires
 
         public async Task<IActionResult> OnPostShatterEcho(string id, string partitionKey)
         {
+            await _echoKeeperChanter.BanishEcho(id);
+
             await _fleshRiteChanters.ShatterEcho(id, partitionKey);
 
             return Redirect("/Grimoires/FleshRites");

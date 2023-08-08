@@ -13,5 +13,7 @@
         public string CosmosKey { get; set; }
 
         public string AzureStorageConnectionString { get; set; }
+
+        public string AzureStorageContainerName { get; set; }
     }
 }

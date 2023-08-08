@@ -7,9 +7,9 @@ namespace Portfolio.MechanistTower.GuardianAegis
 {
     public class AegisDbContext : IdentityDbContext<IdentityUser>
     {
-        private ConfigurationSigils ConfigurationSigils { get; }
+        private IConfigurationSigils ConfigurationSigils { get; }
 
-        public AegisDbContext(ConfigurationSigils configurationSigils, DbContextOptions<AegisDbContext> options)
+        public AegisDbContext(IConfigurationSigils configurationSigils, DbContextOptions<AegisDbContext> options)
             : base(options)
         {
             ConfigurationSigils = configurationSigils;

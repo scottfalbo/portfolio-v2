@@ -12,6 +12,8 @@
 
         public string AltText { get; set; }
 
+        public string StorageFileName { get; set; }
+
         public OculusEcho(string chronicleCode) : base(chronicleCode)
         {
         }

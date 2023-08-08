@@ -19,10 +19,10 @@ namespace Portfolio.MechanistTower.Configurations
             var configurationSigils = InvokeConfigurationSigils(builder, configuration);
 
             ConfigureScryer(builder, configurationSigils);
-            TetherTransients(builder);
             SecureAegis(builder);
             AttuneViewingCrystal(builder);
             ConfigureEchoVault(builder, configurationSigils);
+            TetherTransients(builder);
         }
 
         public static void ImbueConstruct(WebApplication app)
@@ -53,6 +53,7 @@ namespace Portfolio.MechanistTower.Configurations
             builder.Services.AddTransient<IFleshRitesTome, FleshRitesTome>();
             builder.Services.AddTransient<IIllustrationChanters, IllustrationChanters>();
             builder.Services.AddTransient<IIllustrationsTome, IllustrationsTome>();
+            builder.Services.AddTransient<IEchoKeeperChanter, EchoKeeperChanter>();
         }
 
         private static void SecureAegis(WebApplicationBuilder builder)
@@ -76,9 +77,10 @@ namespace Portfolio.MechanistTower.Configurations
                 CosmosEndpoint = configuration["Cosmos:Endpoint"],
                 CosmosKey = configuration["Cosmos:Key"],
                 AzureStorageConnectionString = configuration["AzureStorage:ConnectionString"],
+                AzureStorageContainerName = configuration["AzureStorage:ContainerName"]
             };
 
-            builder.Services.AddSingleton(configurationSigils);
+            builder.Services.AddSingleton<IConfigurationSigils>(configurationSigils);
             return configurationSigils;
         }
 

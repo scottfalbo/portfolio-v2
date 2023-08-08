@@ -11,5 +11,7 @@
         public string CosmosEndpoint { get; set; }
 
         public string CosmosKey { get; set; }
+
+        public string AzureStorageConnectionString { get; set; }
     }
 }

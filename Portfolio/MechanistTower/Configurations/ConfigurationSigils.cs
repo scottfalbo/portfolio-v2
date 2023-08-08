@@ -1,4 +1,6 @@
-﻿namespace Portfolio.MechanistTower.Configurations
+﻿using System.Drawing;
+
+namespace Portfolio.MechanistTower.Configurations
 {
     public class ConfigurationSigils : IConfigurationSigils
     {
@@ -11,5 +13,7 @@
         public string CosmosEndpoint { get; set; }
 
         public string CosmosKey { get; set; }
+
+        public string AzureStorageConnectionString { get; set; }
     }
 }

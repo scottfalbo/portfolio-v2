@@ -1,6 +1,10 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Azure.Core.Extensions;
+using Azure.Storage.Blobs;
+using Azure.Storage.Queues;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Azure.Cosmos;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Azure;
 using Portfolio.MechanistTower.GuardianAegis;
 using Portfolio.MechanistTower.Scryers;
 using Portfolio.MechanistTower.SpellChanters;
@@ -18,6 +22,7 @@ namespace Portfolio.MechanistTower.Configurations
             TetherTransients(builder);
             SecureAegis(builder);
             AttuneViewingCrystal(builder);
+            ConfigureEchoVault(builder, configurationSigils);
         }
 
         public static void ImbueConstruct(WebApplication app)
@@ -69,7 +74,8 @@ namespace Portfolio.MechanistTower.Configurations
                 AdminPass = configuration["SuperAdmin:Password"],
                 AdminEmail = configuration["SuperAdmin:Email"],
                 CosmosEndpoint = configuration["Cosmos:Endpoint"],
-                CosmosKey = configuration["Cosmos:Key"]
+                CosmosKey = configuration["Cosmos:Key"],
+                AzureStorageConnectionString = configuration["AzureStorage:ConnectionString"],
             };
 
             builder.Services.AddSingleton(configurationSigils);
@@ -90,6 +96,14 @@ namespace Portfolio.MechanistTower.Configurations
 
             builder.Services.AddSingleton<ICosmosTomeScryer>(
                 new CosmosTomeScryer(cosmosClient));
+        }
+
+        private static void ConfigureEchoVault(WebApplicationBuilder builder, ConfigurationSigils configurationSigils)
+        {
+            builder.Services.AddAzureClients(builder =>
+            {
+                builder.AddBlobServiceClient(configurationSigils.AzureStorageConnectionString);
+            });
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
-using Microsoft.Azure.Cosmos.Linq;
 using Portfolio.MechanistTower.Configurations;
 
 namespace Portfolio.MechanistTower.SpellChanters

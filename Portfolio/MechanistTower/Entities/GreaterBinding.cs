@@ -10,11 +10,11 @@
 
         public DateTimeOffset CreatedDateTime { get; set; } = DateTimeOffset.UtcNow;
 
-        public GreaterBinding(string chronicleCode)
+        public GreaterBinding(string eternalSymbol)
         {
-            EternalSymbol = chronicleCode;
+            EternalSymbol = eternalSymbol;
             Id = Guid.NewGuid().ToString();
-            PartitionKey = $"{EternalSymbol}-{Id}";
+            PartitionKey = eternalSymbol;
         }
     }
 }

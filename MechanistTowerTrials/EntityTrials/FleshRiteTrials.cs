@@ -7,13 +7,12 @@ namespace MechanistTowerTrials.EntityTrials
     public class FleshRiteTrials
     {
         [TestMethod]
-        public void FleshRites_Constructor_AssignsEternalSymbol_Id_PartitionKey()
+        public void FleshRites_Constructor_AssignsEternalSymbol_PartitionKey()
         {
             var fleshRite = new FleshRite();
 
             var eternalSymbol = fleshRite.EternalSymbol;
-            var id = fleshRite.Id;
-            var expectedPartitionKey = $"{eternalSymbol}-{id}";
+            var expectedPartitionKey = eternalSymbol;
 
             Assert.AreEqual(OculusEchoCyphers.FleshRite, eternalSymbol);
             Assert.AreEqual(expectedPartitionKey, fleshRite.PartitionKey);

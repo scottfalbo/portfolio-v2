@@ -6,6 +6,7 @@ using Microsoft.Azure.Cosmos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Azure;
 using Portfolio.MechanistTower.GuardianAegis;
+using Portfolio.MechanistTower.Manipulators;
 using Portfolio.MechanistTower.Scryers;
 using Portfolio.MechanistTower.SpellChanters;
 using Portfolio.MechanistTower.Tomes;
@@ -54,6 +55,7 @@ namespace Portfolio.MechanistTower.Configurations
             builder.Services.AddTransient<IIllustrationChanters, IllustrationChanters>();
             builder.Services.AddTransient<IIllustrationsTome, IllustrationsTome>();
             builder.Services.AddTransient<IEchoKeeperChanter, EchoKeeperChanter>();
+            builder.Services.AddTransient<IEchoShaper, EchoShaper>();
         }
 
         private static void SecureAegis(WebApplicationBuilder builder)

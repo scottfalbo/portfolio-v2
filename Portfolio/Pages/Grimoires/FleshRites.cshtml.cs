@@ -36,16 +36,13 @@ namespace Portfolio.Pages.Grimoires
 
             foreach (var file in files)
             {
-                var echo = await _echoKeeperChanter.InscribeEcho(file);
-
                 var fleshRite = new FleshRite()
                 {
                     Name = name,
                     AltText = altText,
-                    ImageUrl = echo.Uri.ToString(),
-                    ThumbnailUrl = "https://placehold.co/100x177/939393/FFF",
-                    FileName = file.FileName,
                 };
+
+                await _echoKeeperChanter.InscribeEcho(file, fleshRite);
 
                 await _fleshRiteChanters.ImbueEcho(fleshRite);
             }

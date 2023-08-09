@@ -14,6 +14,8 @@
 
         public string FileName { get; set; }
 
+        public string ThumbnailFileName { get; set; }
+
         public OculusEcho(string chronicleCode) : base(chronicleCode)
         {
         }

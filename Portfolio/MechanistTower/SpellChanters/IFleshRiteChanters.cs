@@ -6,7 +6,7 @@ namespace Portfolio.MechanistTower.SpellChanters
     {
         Task<List<FleshRite>> GetFleshRites();
 
-        Task ImbueEcho(FleshRite fleshRite);
+        Task ImbueEcho(IFormFile[] files, string name, string altText);
 
         Task ShatterEcho(string id, string partitionKey);
     }

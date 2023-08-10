@@ -19,9 +19,21 @@ namespace Portfolio.MechanistTower.SpellChanters
             return fleshRites.ToList();
         }
 
-        public async Task ImbueEcho(FleshRite fleshRite)
+        public async Task ImbueEcho(IFormFile[] files, string name, string altText)
         {
-            await _fleshRitesTome.ImbueFleshRiteAsync(fleshRite);
+
+            foreach (var file in files)
+            {
+                var fleshRite = new FleshRite()
+                {
+                    Name = name,
+                    AltText = altText,
+                };
+
+                await _echoKeeperChanter.InscribeEcho(file, fleshRite);
+
+                await _fleshRitesTome.ImbueFleshRiteAsync(fleshRite);
+            }
         }
 
         public async Task ShatterEcho(string id, string partitionKey)

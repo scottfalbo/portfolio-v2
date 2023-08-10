@@ -8,16 +8,14 @@ namespace Portfolio.Pages.Grimoires
     public class FleshRitesModel : PageModel
     {
         private readonly IFleshRiteChanters _fleshRiteChanters;
-        private readonly IEchoKeeperChanter _echoKeeperChanter;
 
         public bool IsWizardOverLord { get; set; }
 
         public List<FleshRite> FleshRites { get; set; }
 
-        public FleshRitesModel(IFleshRiteChanters fleshRiteChanters, IEchoKeeperChanter echoKeeperChanter)
+        public FleshRitesModel(IFleshRiteChanters fleshRiteChanters)
         {
             _fleshRiteChanters = fleshRiteChanters;
-            _echoKeeperChanter = echoKeeperChanter;
         }
 
         public async Task OnGet()
@@ -34,26 +32,13 @@ namespace Portfolio.Pages.Grimoires
                 altText = "Flesh Rite by Scott Falbo";
             }
 
-            foreach (var file in files)
-            {
-                var fleshRite = new FleshRite()
-                {
-                    Name = name,
-                    AltText = altText,
-                };
-
-                await _echoKeeperChanter.InscribeEcho(file, fleshRite);
-
-                await _fleshRiteChanters.ImbueEcho(fleshRite);
-            }
+            await _fleshRiteChanters.ImbueEcho(files, name, altText);
 
             return Redirect("/Grimoires/FleshRites");
         }
 
         public async Task<IActionResult> OnPostShatterEcho(string id, string partitionKey, string fileName)
         {
-            await _echoKeeperChanter.BanishEcho(fileName);
-
             await _fleshRiteChanters.ShatterEcho(id, partitionKey);
 
             return Redirect("/Grimoires/FleshRites");

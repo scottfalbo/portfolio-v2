@@ -1,3 +1,26 @@
+/* Index */
+
+#home-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-top: 5%;
+}
+
+#home-page-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (min-width: 768px) {
+  #home-page-image img {
+      max-width: 500px;
+  }
+}
+
+/* Gallery stuff */
+
 .gallery-thumbnail-container {
   display: flex;
   flex-wrap: wrap;

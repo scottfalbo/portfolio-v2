@@ -49,6 +49,9 @@ namespace Portfolio.MechanistTower.Entities
         [JsonProperty(PropertyName = "size")]
         public string Size { get; set; }
 
+        [JsonProperty(PropertyName = "thumbnailFileName")]
+        public string ThumbnailFileName { get; set; }
+
         [JsonProperty(PropertyName = "thumbnailUrl")]
         public string ThumbnailUrl { get; set; }
     }

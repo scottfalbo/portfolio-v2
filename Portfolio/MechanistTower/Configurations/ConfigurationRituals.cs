@@ -1,7 +1,4 @@
-﻿using Azure.Core.Extensions;
-using Azure.Storage.Blobs;
-using Azure.Storage.Queues;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Azure.Cosmos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Azure;

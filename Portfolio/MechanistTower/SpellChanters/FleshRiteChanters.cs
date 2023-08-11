@@ -23,7 +23,6 @@ namespace Portfolio.MechanistTower.SpellChanters
 
         public async Task ImbueEcho(IFormFile[] files, string name, string altText)
         {
-
             foreach (var file in files)
             {
                 var fleshRite = new FleshRite()
@@ -38,8 +37,11 @@ namespace Portfolio.MechanistTower.SpellChanters
             }
         }
 
-        public async Task ShatterEcho(string id, string partitionKey)
+        public async Task ShatterEcho(string id, string partitionKey, string fileName, string thumbnailFileName)
         {
+            await _echoKeeperChanter.BanishEcho(fileName);
+            await _echoKeeperChanter.BanishEcho(thumbnailFileName);
+
             await _fleshRitesTome.ShatterFleshRiteAsync(id, partitionKey);
         }
     }

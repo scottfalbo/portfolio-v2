@@ -1,6 +1,4 @@
-﻿using System.Text.RegularExpressions;
-
-namespace Portfolio.MechanistTower.Manipulators
+﻿namespace Portfolio.MechanistTower.Manipulators
 {
     public interface IEchoShaper
     {

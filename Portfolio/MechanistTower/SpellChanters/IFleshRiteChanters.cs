@@ -8,6 +8,6 @@ namespace Portfolio.MechanistTower.SpellChanters
 
         Task ImbueEcho(IFormFile[] files, string name, string altText);
 
-        Task ShatterEcho(string id, string partitionKey);
+        Task ShatterEcho(string id, string partitionKey, string fileName, string thumbnailFileName);
     }
 }

@@ -37,9 +37,9 @@ namespace Portfolio.Pages.Grimoires
             return Redirect("/Grimoires/FleshRites");
         }
 
-        public async Task<IActionResult> OnPostShatterEcho(string id, string partitionKey, string fileName)
+        public async Task<IActionResult> OnPostShatterEcho(string id, string partitionKey, string fileName, string thumbnailFileName)
         {
-            await _fleshRiteChanters.ShatterEcho(id, partitionKey);
+            await _fleshRiteChanters.ShatterEcho(id, partitionKey, fileName, thumbnailFileName);
 
             return Redirect("/Grimoires/FleshRites");
         }

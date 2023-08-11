@@ -6,10 +6,12 @@ namespace Portfolio.MechanistTower.SpellChanters
     public class FleshRiteChanters : IFleshRiteChanters
     {
         private readonly IFleshRitesTome _fleshRitesTome;
+        private readonly IEchoKeeperChanter _echoKeeperChanter;
 
-        public FleshRiteChanters(IFleshRitesTome fleshRitesTome)
+        public FleshRiteChanters(IFleshRitesTome fleshRitesTome, IEchoKeeperChanter echoKeeperChanter)
         {
             _fleshRitesTome = fleshRitesTome;
+            _echoKeeperChanter = echoKeeperChanter;
         }
 
         public async Task<List<FleshRite>> GetFleshRites()

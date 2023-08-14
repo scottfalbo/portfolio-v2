@@ -5,7 +5,7 @@ VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Portfolio", "Portfolio\Portfolio.csproj", "{E4AD1D45-C916-482C-BBE4-FFAA64C1247F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MechanistTowerTrials", "MechanistTowerTrials\MechanistTowerTrials.csproj", "{D214C000-FAA5-433E-BAD2-E5A6AA3ED8F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MechanistTowerTrials", "MechanistTowerTrials\MechanistTowerTrials.csproj", "{D214C000-FAA5-433E-BAD2-E5A6AA3ED8F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

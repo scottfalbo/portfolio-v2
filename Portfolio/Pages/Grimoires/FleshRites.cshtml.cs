@@ -11,7 +11,7 @@ namespace Portfolio.Pages.Grimoires
 
         public bool IsWizardOverLord { get; set; }
 
-        public List<FleshRite> FleshRites { get; set; }
+        public List<FleshRite> Echoes { get; set; }
 
         public FleshRitesModel(IFleshRiteChanters fleshRiteChanters)
         {
@@ -20,7 +20,7 @@ namespace Portfolio.Pages.Grimoires
 
         public async Task OnGet()
         {
-            FleshRites = await _fleshRiteChanters.GetFleshRites();
+            Echoes = await _fleshRiteChanters.GetFleshRites();
 
             IsWizardOverLord = User.Identity.IsAuthenticated;
         }

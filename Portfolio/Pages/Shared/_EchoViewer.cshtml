@@ -1,0 +1,79 @@
+﻿@{
+    var thumbnailIndex = 0;
+    var imageIndex = 0;
+}
+
+<section id="echo-gallery-control" class="carousel slide" data-ride="carousel" data-interval="false">
+    <div class="gallery-thumbnail-container">
+        @foreach (var echo in @Model.Echoes)
+        {
+            <a href="#echo-gallery-control" role="button" data-bs-slide-to="@thumbnailIndex" data-gallery-id="echo-viewer-data-gallery">
+                <div class="gallery-thumbnail">
+                    <img src="@echo.ThumbnailUrl" alt="@echo.AltText" />
+                </div>
+            </a>
+
+            @if (Model.IsWizardOverLord)
+            {
+                <div class="menu-buttons-container">
+                    <div class="menu-button delete-button" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal">
+                        <div class="x-part"></div>
+                        <div class="x-part"></div>
+                    </div>
+
+                    <div class="menu-button edit-button">
+                        <div class="dots">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                Shatter this Echo?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Preserve</button>
+                                <form asp-page-handler="ShatterEcho" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" name="id" value="@echo.Id" />
+                                    <input type="hidden" name="partitionKey" value="@echo.PartitionKey" />
+                                    <input type="hidden" name="fileName" value="@echo.FileName" />
+                                    <input type="hidden" name="thumbnailFileName" value="@echo.ThumbnailFileName" />
+                                    <input type="hidden" name="fileName" value="@echo.FileName" />
+                                    <button type="submit" class="btn btn-danger">Shatter</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            thumbnailIndex++;
+        }
+    </div>
+    <div class="echo-viewer-data-gallery">
+        <div class="carousel-inner">
+            @foreach (var echo in Model.Echoes)
+            {
+                <figure class="carousel-item @(imageIndex == 0 ? "active" : "")">
+                    <img class="d-block w-100" src="@echo.ImageUrl" alt="@echo.AltText" />
+                </figure>
+
+                imageIndex++;
+            }
+            <div class="close-gallery">✖</div>
+        </div>
+        <a class="carousel-control-prev" href="#echo-gallery-control" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#echo-gallery-control" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</section>

@@ -21,3 +21,7 @@ body {
 .menu-toggle:checked + .dropbtn + .dropdown {
   display: block;
 }
+
+.hide-me {
+  display: none;
+}

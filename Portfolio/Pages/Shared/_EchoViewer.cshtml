@@ -10,47 +10,52 @@
             <a href="#echo-gallery-control" role="button" data-bs-slide-to="@thumbnailIndex" data-gallery-id="echo-viewer-data-gallery">
                 <div class="gallery-thumbnail">
                     <img src="@echo.ThumbnailUrl" alt="@echo.AltText" />
+
+                    @if (Model.IsWizardOverLord)
+                    {
+                        <div class="menu-buttons-container">
+                            <div class="menu-button delete-button" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal-@echo.Id">
+                                <div class="x-part"></div>
+                                <div class="x-part"></div>
+                            </div>
+
+                            <div class="menu-button edit-button">
+                                <div class="dots">
+                                    <div class="dot"></div>
+                                    <div class="dot"></div>
+                                    <div class="dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    }
                 </div>
             </a>
 
-            @if (Model.IsWizardOverLord)
-            {
-                <div class="menu-buttons-container">
-                    <div class="menu-button delete-button" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal">
-                        <div class="x-part"></div>
-                        <div class="x-part"></div>
-                    </div>
+            <div class="modal fade" id="deleteConfirmationModal-@echo.Id" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            Shatter this Echo?
+                            @if (echo.Name != null && echo.Name != "")
+                            {
+                                <br /><span class="echo-name">@echo.Name</span>
+                            }
 
-                    <div class="menu-button edit-button">
-                        <div class="dots">
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Preserve</button>
+                            <form asp-page-handler="ShatterEcho" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="id" value="@echo.Id" />
+                                <input type="hidden" name="partitionKey" value="@echo.PartitionKey" />
+                                <input type="hidden" name="fileName" value="@echo.FileName" />
+                                <input type="hidden" name="thumbnailFileName" value="@echo.ThumbnailFileName" />
+                                <input type="hidden" name="fileName" value="@echo.FileName" />
+                                <button type="submit" class="btn btn-danger">Shatter</button>
+                            </form>
                         </div>
                     </div>
                 </div>
-
-                <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                Shatter this Echo?
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Preserve</button>
-                                <form asp-page-handler="ShatterEcho" method="post" enctype="multipart/form-data">
-                                    <input type="hidden" name="id" value="@echo.Id" />
-                                    <input type="hidden" name="partitionKey" value="@echo.PartitionKey" />
-                                    <input type="hidden" name="fileName" value="@echo.FileName" />
-                                    <input type="hidden" name="thumbnailFileName" value="@echo.ThumbnailFileName" />
-                                    <input type="hidden" name="fileName" value="@echo.FileName" />
-                                    <button type="submit" class="btn btn-danger">Shatter</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            }
+            </div>
 
             thumbnailIndex++;
         }

@@ -24,14 +24,11 @@ namespace Portfolio.MechanistTower.Manipulators
             using var echo = Image.Load(file.OpenReadStream());
             var stream = new MemoryStream();
 
-            // Resize with respect to the height
             var newWidth = (int)((double)echo.Width / echo.Height * height);
             echo.Mutate(x => x.Resize(newWidth, height));
 
-            // Check if new width exceeds maxWidth
             if (newWidth > maxWidth)
             {
-                // Determine how much to crop from each side
                 var cropAmount = (newWidth - maxWidth) / 2;
 
                 var cropRectangle = new Rectangle(cropAmount, 0, maxWidth, height);

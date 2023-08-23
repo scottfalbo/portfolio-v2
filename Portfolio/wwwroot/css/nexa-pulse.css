@@ -1,0 +1,27 @@
+.full-screen.nexa-pulse {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,0.8);
+}
+
+.full-screen.nexa-pulse > div {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.full-screen.nexa-pulse.hide-me {
+  display: none;
+}
+

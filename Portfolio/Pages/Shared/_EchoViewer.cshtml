@@ -14,12 +14,12 @@
                     @if (Model.IsWizardOverLord)
                     {
                         <div class="menu-buttons-container">
-                            <div class="menu-button delete-button" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal-@echo.Id">
+                            <div class="menu-button delete-button" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal-@echo.Id" onclick="preventParentLink(event)">
                                 <div class="x-part"></div>
                                 <div class="x-part"></div>
                             </div>
 
-                            <div class="menu-button edit-button">
+                            <div class="menu-button edit-button" onclick="preventParentLink(event)">
                                 <div class="dots">
                                     <div class="dot"></div>
                                     <div class="dot"></div>

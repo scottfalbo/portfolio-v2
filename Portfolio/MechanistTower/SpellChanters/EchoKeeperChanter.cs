@@ -33,7 +33,7 @@ namespace Portfolio.MechanistTower.SpellChanters
                 cancellationToken: default);
         }
 
-        public async Task InscribeEcho(IFormFile file, FleshRite fleshRite)
+        public async Task InscribeEcho(IFormFile file, OculusEcho oculusEcho)
         {
             var echoFileName = _echoShaper.AugmentRunicNaming(file.FileName);
             var reshapedEcho = _echoShaper.ShapeEcho(file, 1920);
@@ -46,10 +46,10 @@ namespace Portfolio.MechanistTower.SpellChanters
 
             var faintEcho = await InscribeEcho(faintReshapedEcho, faintFileName, contentType);
 
-            fleshRite.ImageUrl = echo.Uri.ToString();
-            fleshRite.ThumbnailUrl = faintEcho.Uri.ToString();
-            fleshRite.FileName = echoFileName;
-            fleshRite.ThumbnailFileName = faintFileName;
+            oculusEcho.ImageUrl = echo.Uri.ToString();
+            oculusEcho.ThumbnailUrl = faintEcho.Uri.ToString();
+            oculusEcho.FileName = echoFileName;
+            oculusEcho.ThumbnailFileName = faintFileName;
         }
 
         private async Task<BlobClient> InscribeEcho(Stream stream, string fileName, string contentType)

@@ -34,14 +34,14 @@ namespace Portfolio.Pages.Grimoires
 
             await _illustrationChanters.ImbueEcho(files, name, altText);
 
-            return Redirect("/Grimoires/FleshRites");
+            return Redirect("/Grimoires/Illustrations");
         }
 
         public async Task<IActionResult> OnPostShatterEcho(string id, string partitionKey, string fileName, string thumbnailFileName)
         {
             await _illustrationChanters.ShatterEcho(id, partitionKey, fileName, thumbnailFileName);
 
-            return Redirect("/Grimoires/FleshRites");
+            return Redirect("/Grimoires/Illustrations");
         }
     }
 }

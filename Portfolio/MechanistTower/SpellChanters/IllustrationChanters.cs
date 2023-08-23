@@ -16,33 +16,33 @@ namespace Portfolio.MechanistTower.SpellChanters
 
         public async Task<List<Illustration>> GetIllustrations()
         {
-            var illustration = new List<Illustration>();
+            var illustrations = await _illustrationsTome.GetIllustrationsAsync();
 
-            for (var i = 0; i < 20; i++)
+            return illustrations.ToList();
+        }
+
+        public async Task ImbueEcho(IFormFile[] files, string name, string altText)
+        {
+            foreach (var file in files)
             {
-                var fleshRite = new Illustration()
+                var illustration = new Illustration()
                 {
-                    Name = $"Illustration {i + 1}",
-                    AltText = $"Illustration alt text {i + 1}",
-                    Display = true,
-                    ImageUrl = "https://placehold.co/1080x1920/939393/FFF",
-                    ThumbnailUrl = "https://placehold.co/100x177/939393/FFF",
+                    Name = name,
+                    AltText = altText,
                 };
 
-                illustration.Add(fleshRite);
+                await _echoKeeperChanter.InscribeEcho(file, illustration);
+
+                await _illustrationsTome.ImbueIllustrationAsync(illustration);
             }
-
-            return illustration;
         }
 
-        public Task ImbueEcho(IFormFile[] files, string name, string altText)
+        public async Task ShatterEcho(string id, string partitionKey, string fileName, string thumbnailFileName)
         {
-            throw new NotImplementedException();
-        }
+            await _echoKeeperChanter.BanishEcho(fileName);
+            await _echoKeeperChanter.BanishEcho(thumbnailFileName);
 
-        public Task ShatterEcho(string id, string partitionKey, string fileName, string thumbnailFileName)
-        {
-            throw new NotImplementedException();
+            await _illustrationsTome.ShatterIllustrationAsync(id, partitionKey);
         }
     }
 }

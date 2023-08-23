@@ -42,7 +42,7 @@ namespace Portfolio.MechanistTower.SpellChanters
             var echo = await InscribeEcho(reshapedEcho, echoFileName, contentType);
 
             var faintFileName = $"thumb_{echoFileName}";
-            var faintReshapedEcho = _echoShaper.ShapeEcho(file, 177);
+            var faintReshapedEcho = _echoShaper.ShapeEcho(file, 177, 100);
 
             var faintEcho = await InscribeEcho(faintReshapedEcho, faintFileName, contentType);
 

@@ -60,7 +60,7 @@
             thumbnailIndex++;
         }
     </div>
-    <div class="echo-viewer-data-gallery full-screen" data-interval="false">
+    <div class="echo-viewer-data-gallery full-screen hide-me" data-interval="false">
         <div class="carousel-inner">
             @foreach (var echo in Model.Echoes)
             {
@@ -70,7 +70,10 @@
 
                 imageIndex++;
             }
-            <div class="close-gallery">✖</div>
+            <div class="menu-button delete-button close-gallery">
+                <div class="x-part"></div>
+                <div class="x-part"></div>
+            </div>
         </div>
             <a class="carousel-control-prev circular-control" href="#echo-gallery-control" role="button" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>

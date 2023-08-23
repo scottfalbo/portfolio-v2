@@ -6,10 +6,12 @@ namespace Portfolio.MechanistTower.SpellChanters
     public class IllustrationChanters : IIllustrationChanters
     {
         private readonly IIllustrationsTome _illustrationsTome;
+        private readonly IEchoKeeperChanter _echoKeeperChanter;
 
-        public IllustrationChanters(IIllustrationsTome illustrationsTome)
+        public IllustrationChanters(IIllustrationsTome illustrationsTome, IEchoKeeperChanter echoKeeperChanter)
         {
             _illustrationsTome = illustrationsTome;
+            _echoKeeperChanter = echoKeeperChanter;
         }
 
         public async Task<List<Illustration>> GetIllustrations()
@@ -31,6 +33,16 @@ namespace Portfolio.MechanistTower.SpellChanters
             }
 
             return illustration;
+        }
+
+        public Task ImbueEcho(IFormFile[] files, string name, string altText)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task ShatterEcho(string id, string partitionKey, string fileName, string thumbnailFileName)
+        {
+            throw new NotImplementedException();
         }
     }
 }

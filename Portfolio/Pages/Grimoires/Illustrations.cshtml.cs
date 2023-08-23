@@ -1,7 +1,7 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Portfolio.MechanistTower.Entities;
 using Portfolio.MechanistTower.SpellChanters;
-using System.Runtime.CompilerServices;
 
 namespace Portfolio.Pages.Grimoires
 {
@@ -9,16 +9,39 @@ namespace Portfolio.Pages.Grimoires
     {
         private readonly IIllustrationChanters _illustrationChanters;
 
-        public List<Illustration> Illustrations { get; set; }
+        public bool IsWizardOverLord { get; set; }
 
-        public IllustrationsModel(IIllustrationChanters illustrationChanters)
+        public List<Illustration> Echoes { get; set; }
+
+        public IllustrationsModel(IIllustrationChanters fleshRiteChanters)
         {
-            _illustrationChanters = illustrationChanters;
+            _illustrationChanters = fleshRiteChanters;
         }
 
         public async Task OnGet()
         {
-            Illustrations = await _illustrationChanters.GetIllustrations();
+            Echoes = await _illustrationChanters.GetIllustrations();
+
+            IsWizardOverLord = User.Identity.IsAuthenticated;
+        }
+
+        public async Task<IActionResult> OnPostImbueEcho(IFormFile[] files, string name = "", string altText = "")
+        {
+            if (string.IsNullOrEmpty(altText) || string.IsNullOrWhiteSpace(altText))
+            {
+                altText = "Flesh Rite by Scott Falbo";
+            }
+
+            await _illustrationChanters.ImbueEcho(files, name, altText);
+
+            return Redirect("/Grimoires/FleshRites");
+        }
+
+        public async Task<IActionResult> OnPostShatterEcho(string id, string partitionKey, string fileName, string thumbnailFileName)
+        {
+            await _illustrationChanters.ShatterEcho(id, partitionKey, fileName, thumbnailFileName);
+
+            return Redirect("/Grimoires/FleshRites");
         }
     }
 }

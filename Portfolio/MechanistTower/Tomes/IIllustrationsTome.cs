@@ -8,7 +8,7 @@ namespace Portfolio.MechanistTower.Tomes
 
         Task<Illustration> GetIllustrationAsync(string id, string partitionKey);
 
-        Task<IEnumerable<Illustration>> GetIllustrationAsync();
+        Task<IEnumerable<Illustration>> GetIllustrationsAsync();
 
         Task UpdateIllustrationAsync(Illustration updatedIllustration);
 

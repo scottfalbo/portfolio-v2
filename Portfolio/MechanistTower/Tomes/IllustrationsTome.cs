@@ -1,6 +1,10 @@
 ﻿using Microsoft.Azure.Cosmos;
+using Microsoft.Azure.Cosmos.Linq;
 using Portfolio.MechanistTower.Entities;
+using Portfolio.MechanistTower.Entities.EternalSymbols;
 using Portfolio.MechanistTower.Scryers;
+using Portfolio.MechanistTower.Transmutators;
+using System.Net;
 
 namespace Portfolio.MechanistTower.Tomes
 {
@@ -8,35 +12,88 @@ namespace Portfolio.MechanistTower.Tomes
     {
         private readonly Container _container;
 
+        private readonly IllustrationTransmutator _transmutator;
+
         public IllustrationsTome(ICosmosTomeScryer cosmosTomeScryer)
         {
             var scryer = cosmosTomeScryer.ConjureScryer();
             _container = scryer.GetContainer("PaleSpecter", "Tomes");
+
+            _transmutator = new IllustrationTransmutator();
         }
 
-        public Task<Illustration> GetIllustrationAsync(string id, string partitionKey)
+        public async Task<Illustration> GetIllustrationAsync(string id, string partitionKey)
         {
-            throw new NotImplementedException();
+            try
+            {
+                ItemResponse<InfernalContract> response = await _container.ReadItemAsync<InfernalContract>(id, new PartitionKey(partitionKey));
+
+                var fleshRite = _transmutator.InfernalContractToIllustration(response.Resource);
+
+                return fleshRite;
+            }
+            catch (CosmosException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
+            {
+                return null;
+            }
         }
 
-        public Task<IEnumerable<Illustration>> GetIllustrationAsync()
+        public async Task<IEnumerable<Illustration>> GetIllustrationsAsync()
         {
-            throw new NotImplementedException();
+            var illustrations = new List<Illustration>();
+
+            var query = _container.GetItemLinqQueryable<InfernalContract>()
+                .Where(x => x.EternalSymbol == OculusEchoCyphers.Illustration)
+                .ToFeedIterator();
+
+            while (query.HasMoreResults)
+            {
+                var results = await query.ReadNextAsync();
+
+                foreach (var infernalContract in results)
+                {
+                    var illustration = _transmutator.InfernalContractToIllustration(infernalContract);
+                    illustrations.Add(illustration);
+                }
+            }
+
+            return illustrations;
         }
 
-        public Task ImbueIllustrationAsync(Illustration illustration)
+        public async Task ImbueIllustrationAsync(Illustration illustration)
         {
-            throw new NotImplementedException();
+            var infernalContract = _transmutator.IllustrationToInfernalContract(illustration);
+
+            await _container.CreateItemAsync(infernalContract, new PartitionKey(infernalContract.PartitionKey));
         }
 
-        public Task ShatterIllustrationAsync(string id, string partitionKey)
+        public async Task ShatterIllustrationAsync(string id, string partitionKey)
         {
-            throw new NotImplementedException();
+            try
+            {
+                await _container.DeleteItemAsync<InfernalContract>(id, new PartitionKey(partitionKey));
+            }
+            catch (CosmosException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
+            {
+                throw new KeyNotFoundException($"Illustration with id '{id}' not found.");
+            }
         }
 
-        public Task UpdateIllustrationAsync(Illustration updatedIllustration)
+        public async Task UpdateIllustrationAsync(Illustration updatedIllustration)
         {
-            throw new NotImplementedException();
+            var id = updatedIllustration.Id;
+            var partitionKey = updatedIllustration.PartitionKey;
+
+            var infernalContract = _transmutator.IllustrationToInfernalContract(updatedIllustration);
+
+            try
+            {
+                await _container.ReplaceItemAsync(infernalContract, id, new PartitionKey(partitionKey));
+            }
+            catch (CosmosException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
+            {
+                throw new KeyNotFoundException($"Illustration with id '{id}' not found.");
+            }
         }
     }
 }

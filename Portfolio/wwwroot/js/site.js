@@ -16,3 +16,8 @@ $(document).ready(function(){
   });
 });
 
+$(document).ready(function(){
+  $('.open-nexa-pulse').on('click', function(){
+      $('.nexa-pulse').removeClass('hide-me');
+  });
+});

@@ -1,4 +1,5 @@
 using Portfolio.MechanistTower.Configurations;
+using Azure.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;

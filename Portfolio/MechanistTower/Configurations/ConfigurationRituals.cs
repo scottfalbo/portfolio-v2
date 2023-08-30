@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Azure.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Azure.Cosmos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Azure;
@@ -31,6 +32,12 @@ namespace Portfolio.MechanistTower.Configurations
                 app.UseExceptionHandler("/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
+            }
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var dbContext = scope.ServiceProvider.GetRequiredService<AegisDbContext>();
+                dbContext.Database.Migrate();
             }
 
             app.UseHttpsRedirection();
@@ -67,17 +74,16 @@ namespace Portfolio.MechanistTower.Configurations
 
         private static ConfigurationSigils InvokeConfigurationSigils(WebApplicationBuilder builder, IConfiguration configuration)
         {
-            // TODO: Replace with config binding
-            var configurationSigils = new ConfigurationSigils()
-            {
-                AdminName = configuration["SuperAdmin:UserName"],
-                AdminPass = configuration["SuperAdmin:Password"],
-                AdminEmail = configuration["SuperAdmin:Email"],
-                CosmosEndpoint = configuration["Cosmos:Endpoint"],
-                CosmosKey = configuration["Cosmos:Key"],
-                AzureStorageConnectionString = configuration["AzureStorage:ConnectionString"],
-                AzureStorageContainerName = configuration["AzureStorage:ContainerName"]
-            };
+            var keyVaultUri = configuration["KeyVaultUri"];
+
+            builder.Configuration
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .AddUserSecrets(builder.Environment.ApplicationName)
+                .AddAzureKeyVault(new Uri(keyVaultUri), new DefaultAzureCredential());
+
+            var configurationSigils = new ConfigurationSigils();
+            builder.Configuration.Bind(configurationSigils);
 
             builder.Services.AddSingleton<IConfigurationSigils>(configurationSigils);
             return configurationSigils;
@@ -103,7 +109,7 @@ namespace Portfolio.MechanistTower.Configurations
         {
             builder.Services.AddAzureClients(builder =>
             {
-                builder.AddBlobServiceClient(configurationSigils.AzureStorageConnectionString);
+                builder.AddBlobServiceClient(configurationSigils.BlobConnectionString);
             });
         }
     }

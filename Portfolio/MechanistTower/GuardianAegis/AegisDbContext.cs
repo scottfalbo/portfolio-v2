@@ -26,9 +26,8 @@ namespace Portfolio.MechanistTower.GuardianAegis
 
         private IdentityUser ConjureWizard()
         {
-            var adminName = ConfigurationSigils.AdminName;
-            var adminPass = ConfigurationSigils.AdminPass;
-            var adminEmail = ConfigurationSigils.AdminEmail;
+            var adminName = ConfigurationSigils.AdminUserName;
+            var adminPass = ConfigurationSigils.AdminPassword;
             var userId = Guid.NewGuid().ToString();
 
             var hasher = new PasswordHasher<IdentityUser>();
@@ -38,8 +37,6 @@ namespace Portfolio.MechanistTower.GuardianAegis
                 Id = userId,
                 UserName = adminName,
                 NormalizedUserName = adminName.ToUpper(),
-                Email = adminEmail,
-                NormalizedEmail = adminEmail,
                 EmailConfirmed = true
             };
 

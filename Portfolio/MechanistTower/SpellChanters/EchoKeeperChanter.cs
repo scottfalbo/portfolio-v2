@@ -22,8 +22,8 @@ namespace Portfolio.MechanistTower.SpellChanters
         public async Task BanishEcho(string fileName)
         {
             var blobContainerClient = new BlobContainerClient(
-                _configurationSigils.AzureStorageConnectionString,
-                _configurationSigils.AzureStorageContainerName);
+                _configurationSigils.BlobConnectionString,
+                _configurationSigils.BlobContainerName);
 
             var blob = blobContainerClient.GetBlobClient(fileName);
 
@@ -55,8 +55,8 @@ namespace Portfolio.MechanistTower.SpellChanters
         private async Task<BlobClient> InscribeEcho(Stream stream, string fileName, string contentType)
         {
             var blobContainerClient = new BlobContainerClient(
-                _configurationSigils.AzureStorageConnectionString,
-                _configurationSigils.AzureStorageContainerName);
+                _configurationSigils.BlobConnectionString,
+                _configurationSigils.BlobContainerName);
 
             if (blobContainerClient == null)
             {

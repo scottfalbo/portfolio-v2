@@ -79,8 +79,13 @@ namespace Portfolio.MechanistTower.Configurations
             builder.Configuration
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json")
-                .AddUserSecrets(builder.Environment.ApplicationName)
-                .AddAzureKeyVault(new Uri(keyVaultUri), new DefaultAzureCredential());
+                .AddUserSecrets(builder.Environment.ApplicationName);
+
+            var clientId = configuration["Azure:ClientId"];
+            var clientSecret = configuration["Azure:ClientSecret"];
+            var tenantId = configuration["Azure:TenantId"];
+
+            builder.Configuration.AddAzureKeyVault(new Uri(keyVaultUri), new ClientSecretCredential(tenantId, clientId, clientSecret));
 
             var configurationSigils = new ConfigurationSigils();
             builder.Configuration.Bind(configurationSigils);

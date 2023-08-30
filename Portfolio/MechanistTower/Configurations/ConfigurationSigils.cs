@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-namespace Portfolio.MechanistTower.Configurations
+﻿namespace Portfolio.MechanistTower.Configurations
 {
     public class ConfigurationSigils : IConfigurationSigils
     {

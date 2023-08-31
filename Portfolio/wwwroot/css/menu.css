@@ -1,0 +1,63 @@
+#menu-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.pentagram-menu {
+  display: grid;
+  width: 500px;
+  height: 500px;
+  position: relative;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pentagram-point {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-color: #eee;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.pentagram-link {
+  display: block;
+  text-align: center;
+  line-height: 60px;
+  color: black;
+  text-decoration: none;
+}
+
+.pentagram-menu .pentagram-point:nth-child(1) {
+  top: 0;
+  left: 50%;
+}
+
+.pentagram-menu .pentagram-point:nth-child(2) {
+  top: 80%;
+  left: 80%;
+}
+
+.pentagram-menu .pentagram-point:nth-child(3) {
+  top: 60%;
+  left: 10%;
+}
+
+.pentagram-menu .pentagram-point:nth-child(4) {
+  top: 60%;
+  left: 90%;
+}
+
+.pentagram-menu .pentagram-point:nth-child(5) {
+  top: 80%;
+  left: 20%;
+}
+
+.social-menu {
+  list-style: none;
+  margin-top: 20px;
+}

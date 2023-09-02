@@ -1,20 +1,16 @@
 ﻿namespace Portfolio.MechanistTower.PuzzleBoxWorkshop.CipherBox
 {
-    public class CipherBox
+    public class CipherBoard
     {
-        private GameRune[,] GameBoard { get; set; }
-
-        private int GameBoardX { get; set; }
-
-        private int GameBoardY { get; set; }
-
-        private GameRune ExiledRune { get; set; }
-
+        public GameRune[,] GameBoard { get; set; }
+        public int GameBoardX { get; set; }
+        public int GameBoardY { get; set; }
+        public GameRune ExiledRune { get; set; }
         public bool Victory => IsVictorious();
 
         public int TeleportTranscript;
 
-        public CipherBox(int x, int y)
+        public CipherBoard(int x, int y)
         {
             GameBoard = new GameRune[x, y];
             GameBoardX = x;
@@ -39,6 +35,11 @@
 
                 TeleportTranscript++;
             }
+        }
+
+        public void ReScatterBoard()
+        {
+            ScatterRunes();
         }
 
         private void ConjureRunes()

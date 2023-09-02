@@ -4,11 +4,20 @@
     {
         private GameRune[,] GameBoard { get; set; }
 
+        private int GameBoardX { get; set; }
+
+        private int GameBoardY { get; set; }
+
+        private GameRune ExiledRune { get; set; }
+
         public CipherBox(int x, int y)
         {
             GameBoard = new GameRune[x, y];
+            GameBoardX = x;
+            GameBoardY = y;
 
             ConjureRunes();
+            ExileRune(x, y);
             ScatterRunes();
         }
 
@@ -58,6 +67,37 @@
                 GameBoard[randomX, randomY] = runeTwo;
                 GameBoard[randomX2, randomY2] = runeOne;
             }
+        }
+
+        private void ExileRune(int x, int y)
+        {
+            ExiledRune = GameBoard[x, y];
+            GameBoard[x, y] = null;
+        }
+
+        private bool Victory()
+        {
+            foreach (var rune in GameBoard)
+            {
+                if (rune != null && !rune.IsCorrect)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private (int x, int y)? ForeseenPath(int x, int y)
+        {
+            return (x, y) switch
+            {
+                var (currentX, _) when currentX - 1 >= 0 && GameBoard[currentX - 1, y] == null => (currentX - 1, y),
+                var (currentX, _) when currentX + 1 < GameBoardX && GameBoard[currentX + 1, y] == null => (currentX + 1, y),
+                var (_, currentY) when currentY - 1 >= 0 && GameBoard[x, currentY - 1] == null => (x, currentY - 1),
+                var (_, currentY) when currentY + 1 < GameBoardY && GameBoard[x, currentY + 1] == null => (x, currentY + 1),
+                _ => null
+            };
         }
     }
 }

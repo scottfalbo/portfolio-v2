@@ -40,6 +40,7 @@
         public void ReScatterBoard()
         {
             ScatterRunes();
+            TeleportTranscript = 0;
         }
 
         private void ConjureRunes()

@@ -42,13 +42,16 @@ namespace Portfolio.MechanistTower.Configurations
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
 
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.MapRazorPages();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapRazorPages();
+                endpoints.MapBlazorHub();
+            });
         }
 
         private static void TetherTransients(WebApplicationBuilder builder)
@@ -98,6 +101,8 @@ namespace Portfolio.MechanistTower.Configurations
         {
             // TODO: Remove AddRazorRuntimeCompilation() after development
             builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
+
+            builder.Services.AddServerSideBlazor();
         }
 
         private static void ConfigureScryer(WebApplicationBuilder builder, ConfigurationSigils configurationSigils)

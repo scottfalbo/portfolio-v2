@@ -9,6 +9,7 @@
             GameBoard = new GameRune[x, y];
 
             ConjureRunes();
+            ScatterRunes();
         }
 
         private void ConjureRunes()
@@ -36,6 +37,27 @@
 
         private void ScatterRunes()
         {
+            var random = new Random();
+
+            for (var i = 0; i < 1000; i++)
+            {
+                var randomX = random.Next(0, GameBoard.GetLength(0));
+                var randomY = random.Next(0, GameBoard.GetLength(1));
+
+                var randomX2 = random.Next(0, GameBoard.GetLength(0));
+                var randomY2 = random.Next(0, GameBoard.GetLength(1));
+
+                var runeOne = GameBoard[randomX, randomY];
+                runeOne.X = randomX2;
+                runeOne.Y = randomY2;
+
+                var runeTwo = GameBoard[randomX2, randomY2];
+                runeTwo.X = randomX;
+                runeTwo.Y = randomY;
+
+                GameBoard[randomX, randomY] = runeTwo;
+                GameBoard[randomX2, randomY2] = runeOne;
+            }
         }
     }
 }

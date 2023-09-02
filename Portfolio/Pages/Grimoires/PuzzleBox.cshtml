@@ -1,4 +1,11 @@
 ﻿@page
+@using Microsoft.AspNetCore.Components.Web.Extensions
+@attribute [IgnoreAntiforgeryToken]
+
 @model Portfolio.Pages.Grimoires.PuzzleBoxModel
 @{
 }
+
+<p>Puzzle Box</p>
+
+<component type="typeof(Portfolio.Pages.Grimoires.PuzzleBoxPods.CipherBox)" render-mode="ServerPrerendered" />

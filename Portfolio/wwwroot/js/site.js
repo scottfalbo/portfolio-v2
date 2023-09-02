@@ -21,3 +21,9 @@ $(document).ready(function(){
       $('.nexa-pulse').removeClass('hide-me');
   });
 });
+
+$(document).ready(function(){
+  $('.cipher-box-rune-stone').on('click', function(){
+      console.log("hello");
+  });
+});

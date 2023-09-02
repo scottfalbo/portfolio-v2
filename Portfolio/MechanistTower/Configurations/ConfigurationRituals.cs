@@ -64,7 +64,6 @@ namespace Portfolio.MechanistTower.Configurations
             builder.Services.AddTransient<IIllustrationsTome, IllustrationsTome>();
             builder.Services.AddTransient<IEchoKeeperChanter, EchoKeeperChanter>();
             builder.Services.AddTransient<IEchoShaper, EchoShaper>();
-            builder.Services.AddTransient<ICipherBox, CipherBox>();
         }
 
         private static void SecureAegis(WebApplicationBuilder builder)

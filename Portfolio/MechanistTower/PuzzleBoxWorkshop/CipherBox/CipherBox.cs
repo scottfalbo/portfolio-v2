@@ -10,6 +10,10 @@
 
         private GameRune ExiledRune { get; set; }
 
+        public bool Victory => IsVictorious();
+
+        public int TeleportTranscript;
+
         public CipherBox(int x, int y)
         {
             GameBoard = new GameRune[x, y];
@@ -19,6 +23,22 @@
             ConjureRunes();
             ExileRune(x, y);
             ScatterRunes();
+        }
+
+        public void TranslocateRune(int x, int y)
+        {
+            var teleport = ForeseenPath(x, y);
+
+            if (teleport != null)
+            {
+                var rune = GameBoard[x, y];
+                GameBoard[teleport.Value.x, teleport.Value.y] = rune;
+                rune.X = teleport.Value.x;
+                rune.Y = teleport.Value.y;
+                GameBoard[x, y] = null;
+
+                TeleportTranscript++;
+            }
         }
 
         private void ConjureRunes()
@@ -31,7 +51,7 @@
                 {
                     GameBoard[x, y] = new GameRune
                     {
-                        Sigil = 0,
+                        Sigil = counter,
                         X = x,
                         Y = y,
                         SolvedX = x,
@@ -71,11 +91,11 @@
 
         private void ExileRune(int x, int y)
         {
-            ExiledRune = GameBoard[x, y];
-            GameBoard[x, y] = null;
+            ExiledRune = GameBoard[x - 1, y - 1];
+            GameBoard[x - 1, y - 1] = null;
         }
 
-        private bool Victory()
+        private bool IsVictorious()
         {
             foreach (var rune in GameBoard)
             {

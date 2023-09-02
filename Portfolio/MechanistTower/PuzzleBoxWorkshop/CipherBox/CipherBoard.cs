@@ -78,12 +78,18 @@
                 var randomY2 = random.Next(0, GameBoard.GetLength(1));
 
                 var runeOne = GameBoard[randomX, randomY];
-                runeOne.X = randomX2;
-                runeOne.Y = randomY2;
+                if (runeOne != null)
+                {
+                    runeOne.X = randomX2;
+                    runeOne.Y = randomY2;
+                }
 
                 var runeTwo = GameBoard[randomX2, randomY2];
-                runeTwo.X = randomX;
-                runeTwo.Y = randomY;
+                if (runeTwo != null)
+                {
+                    runeTwo.X = randomX;
+                    runeTwo.Y = randomY;
+                }
 
                 GameBoard[randomX, randomY] = runeTwo;
                 GameBoard[randomX2, randomY2] = runeOne;

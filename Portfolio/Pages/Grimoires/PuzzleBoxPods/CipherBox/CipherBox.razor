@@ -1,4 +1,20 @@
 ﻿<h3>CipherBox</h3>
 
-
-<p>@CipherText</p>
+<div class="cipher-board">
+    <table>
+        @for (var i = 0; i < @GameBoardX; i++)
+        {
+            <tr>
+                @for (var j = 0; j < @GameBoardY; j++)
+                {
+                    <td>
+                        @if (GameBoard[i, j] != null)
+                        {
+                            @GameBoard[i, j].Sigil
+                        }    
+                    </td>
+                }
+            </tr>
+        }
+    </table>
+</div>

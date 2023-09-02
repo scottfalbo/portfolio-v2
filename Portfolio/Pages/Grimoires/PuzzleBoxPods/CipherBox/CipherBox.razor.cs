@@ -5,10 +5,12 @@ namespace Portfolio.Pages.Grimoires.PuzzleBoxPods.CipherBox
 {
     public partial class CipherBox : ComponentBase
     {
-        [Inject] private CipherBoard CipherBoard { get; set; }
+        private CipherBoard CipherBoard { get; set; }
 
         public int TeleportTranscript => CipherBoard.TeleportTranscript;
         public GameRune[,] GameBoard => CipherBoard.GameBoard;
+        public int GameBoardX => CipherBoard.GameBoardX;
+        public int GameBoardY => CipherBoard.GameBoardY;
         public bool Victory => CipherBoard.Victory;
 
         protected override void OnInitialized()
@@ -24,7 +26,7 @@ namespace Portfolio.Pages.Grimoires.PuzzleBoxPods.CipherBox
 
                 if (Victory)
                 {
-                    CipherBoard.GameBoard[CipherBoard.GameBoardX, CipherBoard.GameBoardY] = CipherBoard.ExiledRune;
+                    CipherBoard.GameBoard[GameBoardX, GameBoardY] = CipherBoard.ExiledRune;
                 }
             }
         }
